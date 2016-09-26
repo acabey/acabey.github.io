@@ -3,4 +3,4 @@ function playSound() {
     audioTest.play();
 }
 
-$("#buttonTest").on("click", playSound);
+$("#buttonTest").one("click", playSound);
