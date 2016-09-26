@@ -1,9 +1,9 @@
 img {
-    width: 200px;
+    width: auto;
 }
 
 body {
     text-align: center;
-    font-family: "Georgia";
+    font-family: 'Ubuntu Condensed', sans-serif;
     background-color: #FEFEFC
 }
