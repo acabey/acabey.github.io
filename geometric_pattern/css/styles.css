@@ -1,1 +1,19 @@
+html, body {
+  height: 100%;
+}
 
+body {
+    background: #0dc9f7
+    background: -webkit-linear-gradient(left top, #0dc9f7, #ed1c24);
+    background: -moz-linear-gradient(bottom right, #0dc9f7, #ed1c24);
+    background: -o-linear-gradient(bottom right, #0dc9f7, #ed1c24);
+    background: linear-gradient(to bottom right, #0dc9f7, #ed1c24);
+  margin: 0;
+  display: flex;
+
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+
+  /* This centers our sketch vertically. */
+  align-items: center;
+}
