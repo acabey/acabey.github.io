@@ -1,4 +1,4 @@
-var NUM_CIRCLES = 12;
+var NUM_CIRCLES_WIDE = 12;
 var circleDiameter;
 var colorR = 255;
 var colorG = 255;
@@ -6,9 +6,11 @@ var colorB = 255;
 
 function setup() {
     var cnv = createCanvas(480, 600);
-    background(235,114,96);
+    cnv.background('rgba(0, 0, 0, 0)');
     fill(color(0,135,203));
-    circleDiameter = width/NUM_CIRCLES
+    circleDiameter = width/NUM_CIRCLES_WIDE
+    var NUM_CIRCLES_TALL = height/circleDiameter;
+    var NUM_CIRCLES_TOTAL = NUM_CIRCLES_WIDE*NUM_CIRCLES_TALL;
     
     //Desired gradiant from (0,135,203) to (152,35,149)
     //Deltas are (152, -100, -54)
@@ -25,9 +27,9 @@ function setup() {
         stroke(color(colorG,colorB,colorR));
         ellipse(x, y, circleDiameter, circleDiameter);
         x += circleDiameter;
-        colorR += Math.floor(152/NUM_CIRCLES);
-        colorG += Math.floor(-100/NUM_CIRCLES);
-        colorB += Math.floor(-54/NUM_CIRCLES);
+        colorR += Math.floor(152.0/NUM_CIRCLES_TOTAL);
+        colorG += Math.floor(-100.0/NUM_CIRCLES_TOTAL);
+        colorB += Math.floor(-54.0/NUM_CIRCLES_TOTAL);
     }
 
     y += + .75*circleDiameter;
