@@ -1,9 +1,75 @@
-img {
-    width: auto;
+body {
+  font-family: 'Ubuntu Condensed', "Open Sans", sans-serif;
+  color: #fff;
+  margin: 0; 
+}
+
+header {
+  padding: 20px 0;
+}
+
+header .col-sm-8 {
+  font-weight: 700;
+  margin: 0;
+  justify-content: flex-start;
+}
+
+header .col-sm-4 {
+  padding: 0;
+  width: auto;
+  height: auto !important;
+  list-style: none;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  color: #1d6fa5; 
+  justify-content: flex-end;
+}
+
+header .col-sm-4 ul li > a li > a span {
+    margin-right: 4px;
+    color: #0078D7; 
+}
+header .col-sm-4 ul li {
+    float: right;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    cursor: pointer; 
+}
+
+header .col-sm-4 ul li:hover,
+
+header .col-sm-4 ul li:active {
+    background: #f2f2f2; 
+}
+
+.nav-hide {
+  top: -51px;
+  transition-delay: 2s; 
+}
+
+#toggle-menu {
+  position: absolute;
+  right: 0em;
+  padding: 0px 20px;
+  top: 0;
+  display: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #FFF4E1;
 }
 
 body {
-    text-align: center;
-    font-family: 'Ubuntu Condensed', sans-serif;
-    background-color: #fafaf5
+	background: url('css/GlobalBackground.svg') center;
+}
+
+jumbotron {
+  background: url('css/IntroBackground.svg') center;
+  background-size: cover;
 }
