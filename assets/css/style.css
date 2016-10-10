@@ -78,3 +78,11 @@ body, html {
     /*border: white solid;
     border-width: 1vw;*/
 }
+
+.content h1 {
+    font-size: 40pt;
+}
+
+.content p {
+    font-size: 20pt;
+}
