@@ -1,46 +1,19 @@
-// Sticky Header
-$(window).scroll(function() {
-
-    if ($(window).scrollTop() > 100) {
-        $('.main_h').addClass('sticky');
-    } else {
-        $('.main_h').removeClass('sticky');
-    }
+(function ($) {
+  $(document).ready(function(){
+	// hide .navbar first
+	$('.navbar').hide();
+	
+	// fade in .navbar
+	$(function () {
+		$(window).scroll(function () {
+            // set distance user needs to scroll before we fadeIn navbar
+			if ($(this).scrollTop() > 600) {
+				$('.navbar').fadeIn();
+			} else {
+				$('.navbar').fadeOut();
+			}
+		});
+	});
 });
 
-$(document).ready(function () {
-  var $nav = $('#navigation'),
-      posTop = $nav.position().top;
-  $(window).scroll(function () {
-    var y = $(this).scrollTop();
-    if (y > posTop) { $nav.addClass('fixed'); }
-    else { $nav.removeClass('fixed'); }
-  });
-});
-
-// Mobile Navigation
-$('.mobile-toggle').click(function() {
-    if ($('.main_h').hasClass('open-nav')) {
-        $('.main_h').removeClass('open-nav');
-    } else {
-        $('.main_h').addClass('open-nav');
-    }
-});
-
-$('.main_h li a').click(function() {
-    if ($('.main_h').hasClass('open-nav')) {
-        $('.navigation').removeClass('open-nav');
-        $('.main_h').removeClass('open-nav');
-    }
-});
-
-// navigation scroll lijepo radi materem
-$('nav a').click(function(event) {
-    var id = $(this).attr("href");
-    var offset = 70;
-    var target = $(id).offset().top - offset;
-    $('html, body').animate({
-        scrollTop: target
-    }, 500);
-    event.preventDefault();
-});
+}(jQuery));
