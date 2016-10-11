@@ -1,6 +1,28 @@
 body, html {
     height: 100%;
+    width: 100%;
 }
+/*
+Class Structure
+
+Globals
+
+Navbar
+
+Header (landing page) content
+    main
+    sub
+
+Page Content
+    about
+        profile
+    projects
+    contact
+    other
+    
+Footer
+*/
+
 
 .navbar-default {
     padding: 20px 40px 15px 15px;
@@ -58,18 +80,22 @@ body, html {
 
 .landing-text {
     /*padding-top: 390px;*/
+    /*padding-top: 20%;*/
     padding-top: 37vh;
     color: white;
 }
 
 .landing-text .landing-main {
-    font-size: 80pt;
+    /*font-size: 80pt;*/
+    font-size: 7vw;
 }
 
 .landing-text .landing-sub {
     /*padding-top: 250px;*/
+    /*font-size: 20pt;*/
+    /*padding-top: 14%;*/
     padding-top: 28vh;
-    font-size: 20pt;
+    font-size: 2vw;
 }
 
 .landing-text span {
