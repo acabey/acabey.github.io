@@ -1,22 +1,32 @@
 .button {
-  display: inline-block;
-  border-radius: 4px;
+  border-radius: 100%;
   background-color: #f4511e;
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
+  font-size: 28pt;
+  
+  
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+  
+  white-space: normal;
+  width: 150px;
+  height:150px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  margin-left: -10%;
+  margin-right: -10%;
+  
 }
 
 .button span {
   cursor: pointer;
-  display: inline-block;
-  position: relative;
+  position: absolute;
   transition: 0.5s;
 }
 

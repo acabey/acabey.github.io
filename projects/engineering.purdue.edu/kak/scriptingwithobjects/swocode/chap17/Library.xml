@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<LIBRARY>
+    <BOOK YEAR="1935" LANGUAGE="English" CATEGORY="history"> 
+        <TITLE>Noxious Fumes</TITLE>
+        <AUTHOR>
+            <FIRSTNAME>Sul</FIRSTNAME>
+            <LASTNAME>Phuric</LASTNAME>
+        </AUTHOR>
+        <ISBN>3636-7737-10</ISBN>
+        <PUBLISHER>WordMasters</PUBLISHER>
+    </BOOK>
+    <CD GENRE="Stationary Rock">
+        <TITLE>Jailhouse Frock</TITLE>
+        <ARTIST>
+            <NAME>Lil' Somethin</NAME>
+        </ARTIST>
+        <TRACKS>6</TRACKS>
+        <PUBLISHER>Cosmic Music</PUBLISHER>
+    </CD>
+    <BOOK YEAR="1998" LANGUAGE="French" CATEGORY="fiction"> 
+        <TITLE>Nozy Noztrils</TITLE>
+        <AUTHOR>
+            <FIRSTNAME>Lus</FIRSTNAME>
+            <LASTNAME>Hairs</LASTNAME>
+        </AUTHOR>
+        <ISBN>3687-9983-10</ISBN>
+        <PUBLISHER>Wordsmiths</PUBLISHER>
+    </BOOK>
+    <CD GENRE="Neo Classical">
+        <TITLE>Eternation of Life</TITLE>
+        <ARTIST>
+            <NAME>Johannes Munificent</NAME>
+        </ARTIST>
+        <TRACKS>1</TRACKS>
+        <PUBLISHER>Music of the Nether World</PUBLISHER>
+    </CD>
+    <BOOK YEAR="1989" LANGUAGE="Zeudish" CATEGORY="history"> 
+        <TITLE>Attila the Hun</TITLE>
+        <AUTHOR>
+            <FIRSTNAME>Wus</FIRSTNAME>
+            <LASTNAME>Nofun</LASTNAME>
+        </AUTHOR>
+        <ISBN>3687-9944-10</ISBN>
+        <PUBLISHER>Wordsmiths</PUBLISHER>
+    </BOOK>
+
+</LIBRARY>

@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+
+<!-- definitions is root element of a WSDL document.  Its
+     'name' attribute declares the name of the web service.
+     Its other attributes declare all the namespaces used
+     in the rest of the document. Note that the attribute
+     'targetNamespace' is an XML Schema convenion that allows
+     a WSDL document to refer to itself.   -->
+<definitions name="ACMEWebService" 
+    targetNamespace="urn:ACMEWebService"
+    xmlns:tns="urn:ACMEWebService"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+>
+
+    <!-- Section for declaring all message elements: --> 
+    <!-- Note that the un-prefixed names 'message' and
+         part belong to the default namespace declared
+         previously.  -->
+    <message name="helloRequest">
+    </message>
+    <message name="helloResponse">
+        <part type="xsd:string" />
+    </message>
+
+    <!-- Group message elements into a complete two-way transaction: -->
+    <portType name="ACMEWebServicePortType">
+        <operation name="hello">
+            <input message="tns:helloRequest" />
+            <output message="tns:helloResponse" />
+        </operation>
+    </portType>
+
+    <!-- Describe how a complete transaction, as described by its
+         portType element, will be transmitted over the wire:  -->
+    <binding name="ACMEWebServiceBinding" 
+                        type="tns:ACMEWebServicePortType">
+        <soap:binding style="rpc" 
+               transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="hello">
+            <soap:operation soapAction="" />
+            <input>
+                <soap:body use="encoded" 
+                    namespace="urn:ACMEWebService"
+                    encodingStyle=
+                        "http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body use="encoded" 
+                    namespace="urn:ACMEWebService"
+                    encodingStyle=
+                         "http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>                
+        </operation>
+    </binding>
+
+    <!-- For each client-server transaction, as described by its
+         portType and the associated transport as declared in the
+         binding element, declare the URL for invoking the service: -->
+    <service name="ACMEWebService">
+        <documentation>This is the famous ACME Web Service</documentation>
+        <port name="ACMEWebServicePort" 
+                            binding="tns:ACMEWebServiceBinding">
+            <soap:address location="http://localhost:8080" />
+        </port>
+    </service>
+
+</definitions>
