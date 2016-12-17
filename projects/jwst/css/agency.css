@@ -615,6 +615,20 @@ ul.social-buttons li a:active {
     max-height: 200px !important;
 }
 
+.instruments-fixed-height {
+    max-height: 144px !important;
+}
+
+/* Carousel CSS */
+
+.carousel {
+  height: 60vh;
+}
+
+.carousel img {
+    max-height: 60vh;
+    width: auto;
+  }
 
 .portfolio-modal .close-modal {
   position: absolute;
