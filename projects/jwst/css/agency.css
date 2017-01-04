@@ -200,7 +200,7 @@ fieldset[disabled] .btn-xl.active {
   }
 }
 header {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/James_Webb_Telescope_Model_at_South_by_Southwest.jpg');
+  background-image: url('../img/JWST_Model.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
