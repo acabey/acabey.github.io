@@ -7,18 +7,26 @@
 
 @font-face {
   font-family: 'BaronNeue';
+  src: url('../fonts/baron-neue/BaronNeueBlack.eot');
+  src: url('../fonts/baron-neue/BaronNeueBlack.woff2') format('woff2'),
+       url('../fonts/baron-neue/BaronNeueBlack.woff') format('woff'),
+       url('../fonts/baron-neue/BaronNeueBlack.ttf') format('truetype'),
+       url('../fonts/baron-neue/BaronNeueBlack.svg#BaronNeueBlack') format('svg'),
+       url('../fonts/baron-neue/BaronNeueBlack.eot?#iefix') format('embedded-opentype');
   font-weight: bold;
   font-style: normal;
-  src: url('../fonts/baron-neue/baron_neue_black-webfont.woff') format('woff'), /* Pretty Modern Browsers */
-       url('../fonts/baron-neue/baron_neue_black-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
 @font-face {
   font-family: 'BaronNeue';
+  src: url('../fonts/baron-neue/BaronNeue.eot');
+  src: url('../fonts/baron-neue/BaronNeue.woff2') format('woff2'),
+       url('../fonts/baron-neue/BaronNeue.woff') format('woff'),
+       url('../fonts/baron-neue/BaronNeue.ttf') format('truetype'),
+       url('../fonts/baron-neue/BaronNeue.svg#BaronNeue') format('svg'),
+       url('../fonts/baron-neue/BaronNeue.eot?#iefix') format('embedded-opentype');
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/baron-neue/baron_neue-webfont.woff") format('woff'), /* Pretty Modern Browsers */
-       url("../fonts/baron-neue/baron_neue-webfont.ttf")  format('truetype'), /* Safari, Android, iOS */
 }
  
 html,
@@ -27,7 +35,7 @@ body {
   width: 100%;
 }
 body {
-  font-family: 'BaronNeue', 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
 hr {
   border-color: #F05F40;
@@ -165,6 +173,13 @@ aside {
   }
 }
 header {
+  /*Greyed out background image*/
+  background: 
+  linear-gradient(
+    rgba(112,128,144,.4), 
+    rgba(112,128,144,.4)
+  ),
+  url('../img/header.jpg');
   position: relative;
   width: 100%;
   min-height: auto;
@@ -173,7 +188,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
-  background-image: url('../img/header.jpg');
+  /*background-image: url('../img/header.jpg');*/
   text-align: center;
   color: white;
 }
@@ -186,23 +201,19 @@ header .header-content {
 header .header-content .header-content-inner h1 {
   /* COME BACK TO ME */
   font-family: 'BaronNeue', "Helvetica Neue", Helvetica, Arial;
-  font-size: 64px;
-  font-weight: bold;
-  /*text-transform: uppercase;*/
-  
-  /*font-weight: 700;
+  font-size: 96px !important;
   text-transform: uppercase;
+  font-weight: bold;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 30px;*/
 }
 header .header-content .header-content-inner hr {
   margin: 30px auto;
 }
 header .header-content .header-content-inner p {
-  font-weight: 300;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
+  font-size: 24px !important;
   margin-bottom: 50px;
 }
 @media (min-width: 768px) {
@@ -437,4 +448,22 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #222222;
+}
+
+.black-text-shadow {
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+.shaded-background {
+  /*
+  margin-top: 15px !important;
+  padding-top: 15px !important;
+  padding-bottom: 30px !important;
+  */
+  border-radius: 5px;
+  background-color: rgba(112,128,144,.4) !important;
 }
