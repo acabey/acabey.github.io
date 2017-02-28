@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ File: phonebook.dtd
+ This is a DTD file for the phonebook root element.
+-->
+
+<!ELEMENT phonebook (listing*)>
+<!ELEMENT listing (first, middle*, last, phone+)>
+<!ELEMENT first (#PCDATA)>
+<!ELEMENT middle (#PCDATA)>
+<!ELEMENT last (#PCDATA)>
+<!ELEMENT phone (#PCDATA | pco)*>
+<!ELEMENT pco (#PCDATA)>
+<!ATTLIST phone type CDATA #REQUIRED>

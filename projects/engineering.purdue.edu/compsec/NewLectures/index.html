@@ -1,0 +1,837 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+
+<head>
+<title>Computer and Network Security by Avi Kak</title>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="description" content="Internet security; Network security; Computer security;
+                                  Computer Network Security;
+                                  Web security; Confidentiality and Authentication;
+                                  Protection against malware;
+                                  Intrusion detection;
+                                  Denial of Service attacks;  Viruses and worms;
+                                  Conventional and public-key cryptography;
+                                  Digital signatures; Man-in-the-Middle attack;
+                                  Cryptographically secure hashing functions;
+                                  TCP/IP protocol suite; SYN flood attack;
+                                  DNS protocol; Name resolvers; 
+                                  DNS cache poisoning attack; Packet filtering based
+                                  and proxy server based firewalls; Iptables;
+                                  Proxy servers; SOCKS protocol;
+                                  Dante; Squid; Harvest; PGP; IPSec; TLS/SSL;
+                                  Buffer overflow attack; 
+                                  Conficker worm; Port scanning attacks;
+                                  Controlling access to SSHD; Log scanning; DenyHosts; 
+                                  Port scanners; Vulnerability scanners; Packet
+                                  Sniffers; 
+                                  Spam filtering;
+                                  Filtering out spam;
+                                  Rainbow tables;
+                                  Viruses, worms, and trojans;
+                                  Dictionary attacks and attacks through 
+                                  social engineering;
+                                  P2P networks; Security Issues in P2P." >
+                                  
+<STYLE type="text/css">
+    P.tableheader {text-align: center}
+    .boldtable, .boldtable TD, .boldtable TH
+    {
+/*        margin:25px 25px;              This puts space on the outside of the table, 25px vertical and 25px horiz */
+        font-family:sans-serif;
+        font-size:20pt;
+        color:navy;
+        background-color:white;
+    }
+    .maintable, .maintable TD, .maintable TH
+    {
+        font-family:sans-serif;
+        font-size:12pt;
+        color:navy;
+        background-color:white;
+    }
+    .dwotable TD
+    {
+        padding : 10px 10px;      /* This is what controls padding around the cell content */
+        line-height : 80%;        /* This controls the vertical line spacing for cell content */
+    }
+    .mybr BR             /* This has not worked for me to change the height of a BR vertical space probably because the element BR does not have line-height attribute */
+    {
+        display : block;
+        height : 1.2em;
+/*        line-height : 35px;        */             /* Has no effect */
+        margin-bottom : 20px; 
+    }
+    .myhr HR
+    {
+        height : 2px; 
+        visibility : hidden; 
+        margin-bottom : -1px; 
+    }
+    span.highlight
+    {
+      background-color:yellow
+    }
+
+    li {
+/*        list-style: decimal-leading-zero;    */
+        font-size: 0.7em;                                /* This is how you control the size of numerals in li */
+        margin: 0 0 0 2em;
+    }
+
+/*
+
+    li span {
+        font-size: 0.25em;
+    }
+*/
+
+    P {                             /* replacement for the html element `p' */
+        margin : 10px; 
+    }
+
+    ol {
+        display: block;
+        list-style-type: decimal;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0px;
+    } 
+
+</STYLE>
+
+</head>
+
+<body bgcolor = "#FFFFFFD">
+<!-- <font face = Times New Roman>  -->
+<CENTER>
+
+<TABLE BORDER="0" WIDTH="700" class="boldtable">
+<TR>
+
+<!-- The left alignment below is for the main narrative of what comes before
+     the table of contents -->
+
+<TD ALIGN="left">
+
+<P class="tableheader">
+<font size="6">
+<!--
+Lecture Notes 
+<br>
+on
+<br>
+-->
+<b>Computer and Network Security</b>
+<br>
+by
+<br>
+Avinash Kak
+</font>
+</P>
+
+<br>
+<center>
+<table border="1" width="500" class="dwotable">
+<tr>
+<td align="left">
+<font size="-1" color=magenta>
+<strong>
+Think of these lecture notes as a living textbook that
+strives to strike a balance between the
+systems-oriented issues and the cryptographic issues.
+Without the latter, many aspects of the former cannot
+be fully comprehended, and, without the former, the
+latter are too dry to appreciate.  
+</strong> 
+</font>
+</td> </tr> </table> </center>
+
+<br>
+
+<center>
+<table border="0" width="610" class="boldtable">
+<tr>
+<td align="left">
+
+<font size="+1">
+
+<font color="red" size="+2"> Note for instructors using
+these slides/notes: </font> <br> <br> It is not uncommon for
+the instructors who use these notes/slides to want to know
+how exactly I use them in class since there is much more
+information on a typical slide than you will usually find in
+a powerpoint presentation.
+
+<br>
+<br>
+
+Here is the answer: &nbsp;&nbsp; <font size="-1"> When I
+teach the theoretical portions of this course, I actually
+work out the formulas on the chalkboard <font color="red">
+and, when I do so, I follow the derivations presented in
+these lecture notes.</font> &nbsp; On the other hand, when I
+teach the systems portion of the course, I spend quite a bit
+of time demonstrating the issues on my Linux laptop, <font
+color="red">again in the manner described in these lecture
+notes.</font> &nbsp; These lecture notes are intended as
+much for showing in class in the form of slides as they are
+for focused reading by the students on their own.  When used
+as slides, these serve as backdrop to the explanations
+provided on the chalkboard or through demonstrations on a
+computer.</font>
+
+
+</font>
+
+<br>
+<br>
+
+<font size="+1">
+
+<font color="red" size="+2">Regarding homework assignments: </font> <br>
+<br>
+
+Homework assignments typically involve writing Perl or Python scripts
+<i> in order to gain a deeper understanding of the ideas
+through actual implementation</i>.  (From a pedagogical
+standpoint, scripting is much more efficient for this than
+writing code in raw C.) &nbsp; In the part of the course
+that deals with encryption and hashing, students write
+scripts for implementing DES, AES, RC4, SHA1, SHA512,
+etc. &nbsp; In the part of the course that deals with more
+system related issues, the students are asked to write
+scripts that carry out DoS attacks, buffer overflow attacks,
+etc., against servers (for buffer overflow attacks, that
+would be a socket program in C with intentionally embedded
+buffer-overflow vulnerability).
+
+<br>
+<br>
+
+<font color="blue"> If you are an instructor and you'd like
+to see these homework assignments (<i>along with the two
+best solutions submitted by the students at Purdue</i>),
+send me a note at kak@purdue.edu. If you do so, please place
+the string "requesting security homework" in your subject
+line to get past my merciless spam filter.</font>
+<font color="red"><b>VERY
+IMPORTANT:</b></font> <font size="-1" color="black">Your email
+request for this material must establish two things: that
+you are an instructor and that you are using these lecture
+notes to teach your class. An anonymous email request
+(using, say, a gmail or a yahoomail address) that does not
+indicate your institutional affiliation will be ignored.
+</font>
+</font>
+<br>
+<br>
+
+<font color="red" size="+2"> Useful resources for homework assignments: </font> 
+
+<OL>
+<LI>
+<font size="+1">
+The <A HREF="http://pypi.python.org/pypi/BitVector/3.4.5"><font color="red">BitVector
+class</font></A> in Python is useful for creating compact
+implementations for hash functions (see Lecture 15 for an
+example) and for writing scripts for block and stream
+ciphers.
+</font>
+<br>
+<br>
+</LI>
+
+<LI>
+<font size="+1">
+The <A HREF="http://search.cpan.org/~avikak/Algorithm-BitVector-1.25/lib/Algorithm/BitVector.pm"><font color="red">BitVector
+class</font></A> in Perl that lets you do everything in
+Perl that the above mentioned class does in Python.
+</font>
+<br>
+<br>
+</LI>
+
+<LI>
+<font size="+1">
+If you are writing Perl and/or Python
+scripts for solving homework problems or for course projects, you will find the
+book <A href="http://www.amazon.com/Scripting-Objects-Comparative-Presentation-Object-Oriented/dp/047039725X/ref=sr_11_1?ie=UTF8&amp;qid=1209441683&amp;sr=11-1"><font color="red">"Scripting with Objects"</font></A> a useful
+resource for this course.  
+</font>
+<span class="highlight">
+<font size="-1">
+Chapters 2 and 3 of the book provide
+quick and easy-to-follow introductions to Perl and Python, respectively.
+</font>
+</span>
+
+<br>
+<br>
+</LI>
+
+
+<LI>
+<font size="+1">
+If you'd rather do your homework in C++ or Java, you will find the book
+<A href="http://www.amazon.com/exec/obidos/tg/detail/-/0471268526/qid=1035002466/sr=1-8/ref=sr_1_8/002-5533525-9131261?v=glance"><font color="red">"Programming With Objects"</font></A> a useful resource.  
+This book is now being used at a number of universities for teaching
+object-oriented programming in both C++ and Java simultaneously.
+</font>
+<br>
+<br>
+
+<!-- <center>  -->
+
+<table border="1" width="500" class="dwotable">
+<tr>
+<td align="center">
+<a href="https://engineering.purdue.edu/kak/ObjectsTrilogy.html">
+<font color="red" size="-1">
+If you would like to know about the&nbsp;&nbsp; <strong>OBJECTS TRILOGY PROJECT</strong>&nbsp;&nbsp; that led to the
+two books mentioned above, <font size="+1">click here</font>.</font></a>
+
+<p></p>
+
+<font size="-1">The third book in the Objects Trilogy is:</font><br>
+<a href="http://www.amazon.com/Designing-Objects-Avinash-C-Kak/dp/1118581202/ref=sr_1_3?s=books%26ie=UTF8%26qid=1390315735%26sr=1-3"><font size="+1">"Designing with Objects"</font></a>
+
+</td> </tr> </table> 
+
+<!--   </center>  -->
+
+
+</LI>
+</OL>
+
+<br>
+
+<font size="+1">
+
+<font color="red" size="+2"> When will this material be updated next?: </font> <br>
+<br>
+
+
+The 2016 update of the lecture notes is finished.  The next
+major update of this material is scheduled for the January
+&ndash; April 2017 time frame.
+
+<br>
+<br>
+<!--
+The next serious update of this material is scheduled for the January &mdash; April 2012 time frame.
+-->
+
+</font> 
+
+</tr>
+</table>
+</center>
+
+
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<pre>
+
+</pre>
+<center>
+<!-- <table border="2" style ="border-collapse:collapse;"> -->
+<!-- <table border = "1" style = "border-collapse:collapse;" bordercolor="#000000"> -->
+<TABLE BORDER="2" WIDTH="950" class="maintable">
+    <tr>                             
+      <th colspan="4" NOWRAP  align = "center" height = "30"> <b> <font size = "4.5"> Lecture Notes</font> </b> </th>                                                                 
+    </tr>                                  
+<!--
+    <tr>                                                 
+      <td>1.</td>
+      <td colspan=2 NOWRAP height = "50"> &nbsp; <a href= "NewLectures/Lecture1.pdf">
+      	<font size = "4.5"> Introduction </a> </td>                                    
+    </tr>            	
+-->
+    <tr>                                                 
+      <td>1.</td>
+      <td colspan="3" NOWRAP align="left" height="50"> &nbsp; 	<font size = "4.5"> Introductory material, course administration handout, etc. </font></td>                                    
+    </tr>            	
+
+    <tr>                                                 
+      <td>2.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href="https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture2.pdf">
+      	<font size = "4.5"> Classical Encryption Techniques </font> </a> </td> 
+    <td align="center">Updated January 15, 2016 </td>   
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture2Code.tar.gz">download code</a><br><font size="-2" color="red">Updated: January 13, 2016</font></td>
+    </tr> 
+
+    <tr>                                                 
+      <td>3.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture3.pdf">
+      	<font size = "4.5"> Block Ciphers and the Data Encryption Standard</font> </a> </td> 
+      <td align="center">Updated January 15, 2016 </td>   
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture3Code.tar.gz">download code</a><br><font size="-2" color="red">Updated: January 27, 2015</font></td>
+    </tr> 
+
+    <tr>                                                 
+      <td>4.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture4.pdf">
+      	<font size = "4.5"> Finite Fields (PART 1): Groups, Rings, and Fields</font> </a> </td> 
+      <td align="center">Updated January 21, 2016 </td>    
+      <td align="center">      </td>
+
+    </tr>   
+
+    <tr>                                                 
+      <td>5.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture5.pdf">
+      	<font size = "4.5"> Finite Fields (PART 2): Modular Arithmetic </font> </a> </td> 
+      <td align="center">Updated February 28, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture5Code.tar.gz">download code</a>
+        <br><font size="-2" color="red">Updated: February 28, 2016</font>
+      </td>
+    </tr>   
+
+    <tr>                                                 
+      <td>6.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture6.pdf">
+      	<font size = "4.5"> Finite Fields (PART 3): Polynomial Arithmetic </font> </a> </td> 
+      <td align="center">Updated February 5, 2016</td>
+      <td align="center">      </td>
+    </tr>  
+
+    <tr>                                                 
+      <td>7.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture7.pdf">
+      	<font size = "4.5"> Finite Fields (PART 4): Finite Fields of the Form </font><i>GF</i>(<i>2<sup>n</sup></i>) </a> &nbsp; </td>
+      <td align="center">Updated February 5, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture7Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: February 5, 2016</font>
+</td>
+    </tr>  
+
+    <tr>                                                 
+      <td>8.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture8.pdf">
+      	<font size = "4.5"> AES: The Advanced Encryption Standard </font></a> </td>   
+      <td align="center">Updated April 12, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture8Code.tar.gz">download code</a><br><font size="-2" color="red">Updated: April 12, 2016</font></td>
+    </tr>  
+  
+    <tr>                                                 
+      <td>9.</td>
+      <td NOWRAP align="left" height="60"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture9.pdf">
+      	<font size = "4.5"> Using Block and Stream Ciphers for Secure Wired and WiFi<BR>&nbsp;
+Communications </font> </a> </td>      
+      <td align="center">Updated February 11, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture9Code.tar.gz">download code</a><br><font size="-2" color="red">Updated: February 11, 2016</font></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>10.</td>
+      <td NOWRAP align="left" height="60"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture10.pdf">
+      	<font size = "4.5"> Key Distribution for Symmetric Key Cryptography and<BR>&nbsp;
+Generating Random Numbers </font> </a> </td> 
+      <td align="center">Updated February 11, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture10Code.tar.gz">download code</a></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>11.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture11.pdf">
+      	<font size = "4.5"> Prime Numbers and Discrete Logarithms </font> </a> </td>
+      <td align="center">Updated February 28, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture11Code.tar.gz">download code</a><br><font size="-2" color="red">Updated: February 28, 2016</font></td>
+    </tr>  
+
+     <tr>                                                 
+      <td>12.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture12.pdf">
+      	<font size = "4.5"> Public-Key Cryptography and the RSA Algorithm </font> </a> </td> 
+      <td align="center">Updated February 28, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture12Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: February 28, 2016</font>
+</td>
+    </tr>   	
+
+     <tr>                                                 
+      <td>13.</td>
+      <td NOWRAP align="left" height="65"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture13.pdf">
+      	<font size = "4.5"> Certificates, Digital Signatures, and the Diffie-Hellman<BR>&nbsp;
+Key Exchange Algorithm</font> </a> </td>
+      <td align="center">Updated February 29, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture13Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: February 28, 2016</font>
+</td>
+    </tr>   
+
+     <tr>                                                 
+      <td>14.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture14.pdf">
+      	<font size = "4.5"> Elliptic Curve Cryptography and Digital Rights Management </font> </a> </td>        
+      <td align="center">Updated February 28, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture14Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: February 28, 2016</font>
+</td>
+    </tr>  
+    
+    <tr>                                                 
+      <td>15.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture15.pdf">
+      	<font size = "4.5"> Hashing for Message Authentication </font> </a> </td> 
+      <td align="center">Updated April 12, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture15Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: March 2, 2016</font>
+</td>
+    </tr>  
+    
+    <tr>                                                 
+      <td>16.</td>
+      <td NOWRAP align="left" height="65"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture16.pdf">
+      	<font size = "4.5"> TCP/IP Vulnerabilities and DoS Attacks: IP Spoofing, SYN &nbsp;&nbsp;<BR>&nbsp; Flooding, and The Shrew DoS Attack </font> </a> </td>   
+      <td align="center">Updated April 16, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture16Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: March 12, 2016</font>
+</td>
+    </tr>  
+    
+    <tr>                                                 
+      <td>17.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture17.pdf">
+      	<font size = "4.5"> DNS and the DNS Cache Poisoning Attack </font> </a> </td>     
+      <td align="center">Updated April 12, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture17Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: March 23, 2016</font>
+</td>
+    </tr>  
+
+    <tr>                                                 
+      <td>18.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture18.pdf">
+      	<font size = "4.5"> Packet Filtering Firewalls (Linux) </font> </a> </td> 
+      <td align="center">Updated March 23, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture18Code.tar.gz">download code</a></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>19.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture19.pdf">
+      	<font size = "4.5"> Proxy-Server Based Firewalls </font> </a> </td>    
+      <td align="center">Updated March 24, 2016 </td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture19Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: March 24, 2016</font>
+</td>
+    </tr>  
+
+    <tr>                                                 
+      <td>20.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture20.pdf">
+      	<font size = "4.5"> PGP, IPSec, SSL/TLS, and Tor Protocols </font></a> </td>
+      <td align="center">Updated March 29, 2016</td>
+      <td align="center">      </td>
+    </tr>  
+
+    <tr>                                                 
+      <td>21.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture21.pdf">
+      	<font size = "4.5"> The Buffer Overflow Attack </font> </a> </td>    
+      <td align="center">Updated April 19, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture21Code.tar.gz">download code</a></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>22.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture22.pdf">
+      	<font size = "4.5"> Malware: Viruses and Worms </font> </a> </td>    
+      <td align="center">Updated April 21, 2016 </td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture22Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: April 8, 2016</font>
+</td>
+    </tr>  
+
+    <tr>                                                 
+      <td>23.</td>
+      <td NOWRAP align="left" height="60"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture23.pdf">
+      	<font size = "4.5">Port and Vulnerability Scanning, Packet Sniffing, Intrusion<br>&nbsp; Detection, and Penetration Testing</font> </a> </td>    
+      <td align="center">Updated April 7, 2016</td>
+      <td align="center">      </td>
+    </tr>  
+
+    <tr>                                                 
+      <td>24.</td>
+      <td NOWRAP align="left" height="60"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture24.pdf">
+      	<font size = "4.5">Dictionary Attacks and Rainbow-Table Attacks on Password<br>&nbsp; Protected Systems</font> </a> </td> 
+      <td align="center">Updated April 12, 2016</td>
+      <td align="center">      </td>
+    </tr>  
+
+    <tr>                                                 
+      <td>25.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture25.pdf">
+      	<font size = "4.5">Security Issues in Structured Peer-to-Peer Networks </font> </a> </td> 
+      <td align="center">Updated April 20, 2016</td>
+      <td align="center">      </td>
+    </tr>  
+
+    <tr>                                                 
+      <td>26.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture26.pdf">
+      	<font size = "4.5">Small-World Peer-to-Peer Networks and Their Security Issues </font> </a> </td>    
+      <td align="center">Updated April 14, 2016 </td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture26Code.tar.gz">download code</a></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>27.</td>
+      <td NOWRAP align="left" height="60"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture27.pdf">
+      	<font size = "4.5">Web Security: PHP Exploits, SQL Injection, and the Slowloris<br>&nbsp; Attack</font> </a> </td>    
+      <td align="center">Updated April 19, 2016 </td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture27Code.tar.gz">download code</a>
+<br><font size="-2" color="red">Updated: April 17, 2016</font>
+</td>
+    </tr>  
+
+    <tr>                                                 
+      <td>28.</td>
+      <td NOWRAP align="left" height="60"> &nbsp; 
+        <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture28.pdf">
+      	<font size = "4.5">Web Security: Cross-Site Scripting and Other Browser-Side<br>&nbsp; Exploits</font> </a> </td>    
+      <td align="center">Updated April 19, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture28Code.tar.gz">download code</a></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>29.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture29.pdf">
+      	<font size = "4.5">Bots, Botnets, and the DDoS Attacks</font> </a> </td>    
+      <td align="center">Updated April 21, 2016 </td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture29Code.tar.gz">download code</a><br><font size="-2" color="red">Updated: April 22, 2015</font></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>30.</td>
+      <td NOWRAP align="left" height="60"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture30.pdf">
+      	<font size = "4.5">Mounting Targeted Attacks with Trojans and Social Engineering
+<br>&nbsp; --- Cyber Espionage </font> </a> </td>    
+      <td align="center">Updated April 20, 2016 </td>
+      <td align="center">      </td>
+    </tr>  
+
+    <tr>                                                 
+      <td>31.</td>
+      <td NOWRAP align="left" height="50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture31.pdf">
+      	<font size = "4.5">Filtering Out Spam </font> </a> </td>    
+      <td align="center">Updated April 12, 2016 </td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture31Code.tar.gz">download code</a></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>32.</td>
+      <td NOWRAP align="left" height="55"> &nbsp; 
+      <a href= "https://engineering.purdue.edu/kak/compsec/NewLectures/Lecture32.pdf"> 
+      <font size = "4.5">  Security Vulnerabilities of Mobile Devices<br></font> 
+</a>
+</td>    
+      <td align="center"> Updated April 19, 2016</td>
+      <td align="center"><a href="https://engineering.purdue.edu/kak/compsec/code/Lecture32Code.tar.gz">download code</a><br><font size="-2" color="red">Updated: April 25, 2015</font></td>
+    </tr>  
+
+    <tr>                                                 
+      <td>33.</td>
+      <td NOWRAP align="left" height = "50"> &nbsp; <a href= "https://engineering.purdue.edu/kak/compsec/compsecIndex.html">
+      	<font size = "4.5">Index &nbsp; (HTML) </font> </a> </td>    
+      <td align="center">Updated April 25, 2016 </td>
+      <td align="center">      </td>
+    </tr>  
+
+
+<!-- &nbsp;&nbsp; <font color="red"><i>(new lecture, feedback welcome)</i></font>  -->    
+<!-- 
+      <td><img src="newicon.gif" alt=" * "> </td>
+-->
+
+</table>
+</center>
+
+<pre>
+</pre>
+
+<br>
+
+<center>
+<table BORDER="0" WIDTH="600" class="maintable">
+<tr>
+<td align="left">
+<font color="blue">
+<B>
+Follow me on Twitter if you want to be automatically informed
+of when the updates to these lectures are completed each year.
+</B>
+</font> 
+</td>
+</tr>
+</table> 
+</center>
+
+<br>
+
+<center>
+<table BORDER="0" WIDTH="600" class="maintable">
+
+<tr>
+<td align="left">
+<font color="red"><B>A BRIEF HISTORY:</B>
+
+These lecture notes, at least several of them, made their
+first appearance on the web in 2006.  They have so far gone
+through eight revisions.  With each revision I have
+attempted to improve the explanations on the basis of the
+feedback I receive from the students at Purdue and from
+other users of these notes. Regarding the notes that deal
+with the systems side of security, I have continually
+endeavored to find the best ways to combine the explanation
+of the concepts involved and their demonstration on a laptop
+keeping in the mind the time constraints of a typical
+lecture period.
+
+</font> 
+</td>
+</tr>
+</table> 
+</center>
+
+<br>
+
+
+<center>
+<table BORDER="0" WIDTH="600" class="maintable">
+<tr>
+<td align="left">
+<font color="red"><B>HOW CAN YOU BE SURE YOU HAVE THE LATEST
+UPDATED VERSION OF A LECTURE:</B> 
+
+As I am thinking about the material and teaching it in
+class, a lecture may go through as many as a dozen updates.
+If you are tracking my updates, the only way you can be
+certain you have the final version of an updated lecture is
+to check at the end of April when I am usually done with all
+the updating.  When I am done, I post a notice to that
+effect on Twitter.
+
+</font> 
+</td>
+</tr>
+</table> 
+</center>
+
+<br>
+
+
+
+<center>
+<table BORDER="0" WIDTH="600" class="maintable">
+<tr>
+<td align="left">
+<font color="red"><B>EXPERIENCING PROBLEMS?</B>
+If you experience any problems with downloading or
+using any of these PDF files, please send an email to
+kak@purdue.edu&nbsp; with the string "Problem with
+computer security notes"&nbsp;&nbsp; in the subject line to get past my
+spam filter.</font> 
+</td>
+</tr>
+</table> 
+</center>
+
+<br>
+
+<center>
+<table BORDER="0" WIDTH="600" class="maintable">
+<tr>
+<td align="left">
+<font color="red"><B>FEEDBACK WELCOME!</B> If you have any comments or any
+suggestions for improving these notes, 
+please send an email to
+kak@purdue.edu&nbsp; with the string &nbsp;"Comments on
+computer security notes"&nbsp;&nbsp; in the subject line to get past my
+spam filter.  Any suggestions that I incorporate would be duly 
+acknowledged.</font> 
+</td>
+</tr>
+</table> 
+</center>
+
+
+<br>
+
+<center>
+<table BORDER="0" WIDTH="600" class="maintable">
+<tr>
+<td align="left">
+
+<font color="red"><B>WOULD YOU LIKE TO CONTRIBUTE A HOMEWORK
+PROBLEM OR A PROJECT?</B> My goal is for these notes to become self-contained
+as a medium of instruction in computer and network security.  Toward
+that end, I'd like to end the notes for each lecture on a set of
+homework problems and/or projects.  If you send me a problem or a
+project, your name will be mentioned as the author of that problem or
+project.  If you submit a project, please make sure that it can be done
+in one or two weeks' time in some high-level language.  I'll certainly
+include the problems and projects I currently give out when teaching
+this material, but any contributions made by others using these lecture
+notes would add to the variety.  If you choose to send me a problem or a
+project, email it to &nbsp;kak@purdue.edu&nbsp; with the string
+"homework for computer security notes" in the subject line.
+
+</font> 
+</td>
+</tr>
+</table> 
+</center>
+
+<br>
+
+<center>
+<table BORDER="0" WIDTH="600" class="maintable">
+<tr>
+<td align="left">
+<font color="red"><B>SAVE THIS INFORMATION IN A SAFE PLACE:</B> 
+
+If you are a frequent user of this material, note that
+occasionally the web server hosting this material may be
+down for system maintenance.  If you cannot access this
+material but you have an urgent need to do so, send an email
+immediately to kak@purdue.edu&nbsp; with the string
+&nbsp;"Unable to access computer security notes"&nbsp;&nbsp;
+in the subject line to get past my spam filter.  I should be
+able to provide you with a URL to another web server hosting
+this material.
+
+</font>
+
+</td>
+</tr>
+</table> 
+</center>
+
+
+
+<pre>
+
+
+</pre>  
+
+<p>
+    <a href="http://validator.w3.org/check?uri=https://Engineering.Purdue.Edu/kak/compsec/NewLectures/Index.html"><img
+        src="/kak/w3c/valid-html401.png"
+        alt="Valid HTML 4.01 Transitional" height="31" width="88"></a>
+    <a href="http://jigsaw.w3.org/css-validator/validator?uri=https://Engineering.Purdue.Edu/kak/compsec/NewLectures/Index.html">
+        <img style="border:0;width:88px;height:31px"
+            src="/kak/w3c/vcss-blue.gif"
+            alt="Valid CSS!"> </a>
+</p>
+
+ 
+</body>
+</html>

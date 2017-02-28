@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!-- The name of this XML document is: Phonebook.xml -->
+
+<phonebook>
+    <listing>
+        <first>John</first>
+        <middle>C.</middle>
+        <last>Hancock</last>
+        <phone type="home">1-800-123-4567</phone>
+      </listing>
+    <listing>
+        <first>Susan</first>
+        <last>Anthony</last>
+        <phone type="work">1-800-234-5678</phone>
+    </listing>
+    <listing>
+        <first>Zaphod</first>
+        <middle> Doubleheaded</middle>
+        <last>Beeblecrox</last>
+        <phone type="cell">9-000-666-1234</phone>
+    </listing>
+    <listing>
+        <first>Trillian</first>
+        <last>Earthling</last>
+        <phone type="work">9-000-222-2345</phone>
+    </listing>
+    <listing>
+        <first>Miss</first>
+        <last>Importante</last>
+        <phone type="cell">0-111-234-8888</phone>
+    </listing>
+</phonebook>

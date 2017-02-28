@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<AAA xmlns="http://AAAnamespace"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://AAAnamespace SubEleRelSchema.xsd"
+     xx="45">
+    <BBB>qq</BBB>
+    <CCC>1      2</CCC>
+    <DDD>
+        <GGG>
+            <JJJ />
+            <HHH />    
+            <III />
+        </GGG>
+    </DDD>
+</AAA>

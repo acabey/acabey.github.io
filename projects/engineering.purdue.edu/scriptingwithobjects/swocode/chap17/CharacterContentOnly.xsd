@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!--  file: CharacterContentOnly.xsd -->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"      
+      targetNamespace="http://AAAnamespace"                    
+      elementFormDefault="qualified"> 
+    <xsd:element name="AAA">                                   <!-- A -->
+        <xsd:complexType>                                      <!-- B -->
+            <xsd:simpleContent>                                <!-- C -->
+                <xsd:extension base="xsd:string">              <!-- D -->
+                    <xsd:attribute name="xx" 
+                         type="xsd:string" 
+                         use="optional" default="pp" />        <!-- E -->
+                </xsd:extension>
+            </xsd:simpleContent>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<AAA xmlns="http://AAAnamespace"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://AAAnamespace MixedContent.xsd">
+    "testing mixed content schema"
+    <BBB />
+    "testing mixed content schema again"
+    <CCC />
+    "testing mixed content schema and yet again"
+    <DDD />
+</AAA>

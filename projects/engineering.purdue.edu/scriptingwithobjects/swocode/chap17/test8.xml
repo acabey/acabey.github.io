@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<NS1:A xmlns:NS1="http://www.mywebsite.com/NS1names/"
+     xmlns:NS2="http://www.mywebsite.com/NS2names/"
+     xmlns="http://www.mywebsite.com/NS3names/"
+>
+    <NS1:B NS1:x="hello" y="jello" NS2:z="mello">hellojellomello</NS1:B>
+    <C w="cello"/>
+</NS1:A>
