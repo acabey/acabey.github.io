@@ -1,72 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags always come first -->
+
+<head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    
-    <title>Andrew Cabey </title>
-    <link rel="shortcut icon" href="/assets/img/favicon-shadowedlock.png" />
-    
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Andrew Cabey Portfolio page">
+    <meta name="author" content="Andrew Cabey">
 
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-  </head>
-  <body>
-    
-    <div class="masthead parallax">
-      <div class="landing-text text-center">
-        
-        <h1 class="landing-main">
-          <span>Hi, I'm Andrew</span>
-        </h1>
-        <p class="landing-sub">
-          programmer / creator / thinker
-        </p>
-      </div>
-    </div>
-    
-    <div class="row content content-about">
-      <div class="col-md-8 col-md-offset-2">
-        <h1>About</h1>
-  			<p>Hi, my name is <strong>Andrew Cabey</strong>, I am a computer programmer for the Westwood High School Robotics team and I have been programming since I was 13 years old with proficiency in Java, Python, C, and C++.</p>
-  			<p>I am interested in low-level development with C, compiler design and reverse engineering </p>
-  			<p>My hobbies are programming, experimenting with enterprise systems and technologies and running.</p>
-      </div>
-    </div>
-    
-    <div class="row content content-projects">
-      <div class="col-md-8 col-md-offset-2">
-        <h1>Profile</h1>
-        <ul>
-  				<div class="small-line"></div>
-  				<li class="profile-list"><a href="/assets/PublicResume.pdf">Resume</a></li>
-  				<div class="small-line"></div>
-  				<li class="profile-list">Hobbies
-  					<li class="profile-list">Running</li>
-  					<li class="profile-list">Watching Movies</li>
-  				</li>
-  				<div class="small-line"></div>
-  			</ul>
-      </div>
-    </div>
-    
-    <div class="row content content-projects">
-      <div class="col-md-8 col-md-offset-2">
-        <h1>Notice</h1>
-        <p>
-          I'm currently working on a number of projects within the site rather than my home page. At some point I will return to complete it, but for now the best I can show is <a href="http://acabey.xyz/projects/jwst">here</a>
-        </p>
-    </div>
+    <title>Andrew Cabey</title>
 
-    <!-- jQuery first, then Bootstrap JS. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/assets/scripts/main.js"></script>
-  </body>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="assets/css/creative.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Andrew Cabey</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#skills">Skills</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">Andrew Cabey</h1>
+                <hr>
+                <p>programmer / creator / thinker</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">About Me</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading text-faded">Who Am I?</h2>
+                    <hr class="light">
+                    <p class="text">I am a computer scientist/ engineer and I have been programming since I was 13 years old with proficiency in Java, Python, C, and C++.</p>
+                    <p>I am interested in low-level development with C, compiler design and reverse engineering.</p>
+                    <p>My hobbies are programming, experimenting with enterprise systems and running.</p>
+                    <a href="#skills" class="page-scroll btn btn-default btn-xl sr-button">My Stuff</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">My Skills</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-coffee text-primary sr-icons"></i>
+                                <h3>Java</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-terminal text-primary sr-icons"></i>
+                                <h3>C</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-plus text-primary sr-icons"></i>
+                                <h3>C++</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-microchip text-primary sr-icons"></i>
+                                <h3>x86 ASM</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-linux text-primary sr-icons"></i>
+                                <h3>Linux</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-cloud text-primary sr-icons"></i>
+                                <h3>QEMU/KVM</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-gg text-primary sr-icons"></i>
+                                <h3>Python</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-code-fork text-primary sr-icons"></i>
+                                <h3>Git</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-graduation-cap text-primary sr-icons"></i>
+                                <h3>Teaching</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-code text-primary sr-icons"></i>
+                                <h3>HTML</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-css3 text-primary sr-icons"></i>
+                                <h3>CSS</h3>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="service-box">
+                                <i class="fa fa-4x fa-jsfiddle text-primary sr-icons"></i>
+                                <h3>Javascript</h3>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="no-padding" id="portfolio">
+        <aside class="bg-dark">
+            <div class="container text-center">
+                <div class="call-to-action">
+                    <h2 class="text-faded">My Portfolio</h2>
+                    <a href="/assets/PublicResume.pdf" class="btn btn-default btn-xl sr-button">Resume</a>
+                </div>
+            </div>
+        </aside>
+        <div class="container-fluid">
+            <div class="row no-gutter popup-gallery">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="assets/img/portfolio/fullsize/1.jpg" class="portfolio-box">
+                        <img src="assets/img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Java
+                                </div>
+                                <div class="project-name">
+                                    FIRST Robotics
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="assets/img/portfolio/fullsize/2.jpg" class="portfolio-box">
+                        <img src="assets/img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    C/x86 Assembly
+                                </div>
+                                <div class="project-name">
+                                    Hello Kernel
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="assets/img/portfolio/fullsize/3.jpg" class="portfolio-box">
+                        <img src="assets/img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Teaching
+                                </div>
+                                <div class="project-name">
+                                    USSTEAM Academy
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="assets/img/portfolio/fullsize/4.jpg" class="portfolio-box">
+                        <img src="assets/img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Python / Linux/ Virtualization
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="assets/img/portfolio/fullsize/5.jpg" class="portfolio-box">
+                        <img src="assets/img/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    HTML/CSS
+                                </div>
+                                <div class="project-name">
+                                    James Webb Space Telescope
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="assets/img/portfolio/fullsize/6.jpg" class="portfolio-box">
+                        <img src="assets/img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Java
+                                </div>
+                                <div class="project-name">
+                                    Logitim Assembler
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2 class="text-faded">My Blog</h2>
+                <p>If you'd be interested in homelab or cool technology related things I find while bug-fixing or pretending to be a sysadmin, check out my blog!</p>
+                <a href="/blog/" class="btn btn-default btn-xl sr-button">A Series of Unfortunate Events</a>
+            </div>
+        </div>
+    </aside>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">How to Contact Me</h2>
+                    <hr class="primary">
+                    <p>Need to reach me? Interested in one of my projects or could use an extra pair of hands on your own?</p>
+                </div>
+                
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="mailto:me@acabey.xyz">
+                                <span class="fa-stack fa-3x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope-o sr-contact fa-inverse"></i>
+                                </span>
+                            </a>
+                            <li>
+                        <li>
+                            <a href="https://acabey.xyz/assets/acabey.asc">
+                                <span class="fa-stack fa-3x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-key fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                            <a href="https://twitter.com/AndrewCabey">
+                                <span class="fa-stack fa-3x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/acabey">
+                                <span class="fa-stack fa-3x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/andrew-cabey-14a509131">
+                                <span class="fa-stack fa-3x">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <p class="copyright text-muted">Copyright &copy; Andrew Cabey 2017</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="assets/vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="assets/js/creative.min.js"></script>
+
+</body>
+
 </html>
