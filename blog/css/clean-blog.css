@@ -185,7 +185,7 @@ hr.small {
   }
 }
 .intro-header .post-heading h1 {
-  font-family: 'Monument Valley', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Lora', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 35px;
 }
 .intro-header .post-heading .subheading,
@@ -420,4 +420,14 @@ body {
 @font-face {
   font-family: 'Monument Valley';
   src: url('../vendor/Monument_Valley_1.2-Regular.woff2') format('woff2'); 
+}
+
+.shaded-background {
+  /*
+  margin-top: 15px !important;
+  padding-top: 15px !important;
+  padding-bottom: 30px !important;
+  */
+  border-radius: 5px;
+  background-color: rgba(112,128,144,.4) !important;
 }
