@@ -9,14 +9,24 @@
     <meta name="description" content="Making custom LXC templates in Proxmox">
     <meta name="author" content="Andrew Cabey">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
     <title>Custom Proxmox Templates</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Syntax highlighter CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+
     <!-- Theme CSS -->
     <link href="../../css/clean-blog.css" rel="stylesheet">
-
+    
     <!-- Custom Fonts -->
     <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -32,7 +42,6 @@
 </head>
 
 <body>
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
@@ -63,11 +72,11 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/space-bg.jpg')">
+    <header class="intro-header" style="background:linear-gradient(rgba(112,128,144,.6), rgba(112,128,144,.6)),url('img/proxmox-bg.PNG');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading black-text-shadow">
+                    <div class="post-heading">
                         <h1>Custom Proxmox Templates</h1>
                         <h2>Making custom LXC templates in Proxmox</h2>
                         <span class="meta"><a href="#">Andrew Cabey</a> - March 14, 2017</span>
@@ -83,47 +92,252 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     
-                    <h2 class="section-heading">Introduction</h2>
+                    <h2 class="section-heading">Base Container</h2>
                     
-                    <p>Pink Floyd’s 1973 album, The Dark Side of the Moon is one of the most critically acclaimed, best-selling and heavily scrutinized works of all time; developed over the course of a year with intent to clarify the messages of previous albums, The Dark Side of the Moon offers insight on the human experience (as perceived by the band) by exploring various stages of modern life. The album’s second track, Breathe, begins in the stage of childhood where, through the rhetorically crafted relationship between vocalist and listener as well purposeful metaphor, Pink Floyd implores the audience to truly experience the full potential of human life rather than thoughtlessly sustaining oneself.</p>
-
-                    <h2 class="section-heading">Building the Relationship</h2>
-
-                    <p>Through rhetorical choices in vocal expression and verse structure, Pink Floyd crafts a relationship between the listener and vocalist where the artist is interpreted as a guiding parental figure and the audience a child naively entering the world; it is through this relationship that Pink Floyd is able to call the audience to action as a child would head the retrospective advice of an elder reflecting on their own memories and experiences. As the second track in the album, Breathe relies on the context set by previous track, Speak to Me, which consists of a constant heartbeat leading to a scream to begin Breathe. This combination is interpreted as the beginning of life with childbirth. Recurring elements in the album are the choices made in vocal expression, where the lead vocalist maintains a slow, consistent rhythm, clear pronunciation, and stable volume; this amounts to the song coming across not as verbally-backed music, but rather as musically-backed spoken word where the vocalist is a narrator, not a singer. Breathe’s structure consists of four verses, the first and third being commands directed to the audience while the second and fourth are reflective explanations of these commands: heeding to an image of generation cycles, this structure pays homage to human progress through the accumulation of experience and further strengthens the narrator’s role as a parental guide.</p>
-
-                    <h2 class="section-heading">Using the Relationship</h2>
-
-                    <p>Operating with this relationship, Pink Floyd pushes their statement on human experience. The lyrics begin with social criticism wrapped in two seemingly innocuous commands: “Breathe, breathe in the air / Don’t be afraid to care” (1-2). The blunt and superficially obvious meaning of ‘Breathe’ is meant to imply that there is a deeper, unseen level to the very basic processes of life which humans have come to take for granted: Pink Floyd means to express that to every aspect of life, man is capable of entering a deeper level of experience, and in correcting the audience the band criticizes society for its failure to embrace this gift of nature. While breathing can be done subconsciously, man is unique in his ability to take even the most basic action into conscious control; man is able to operate with purpose. The command is a call to action for the audience to reflect on their life down to the most basic process as breathing, and take advantage of everything that humanity has to offer by operating with purpose. The band contests that living in this way is the ‘true’ human experience. This subtle yet powerful implication is pushed further in the second command where Pink Floyd orders the audience not to shield themselves from the human experience: this line is a reflection of the band’s observations of mankind where they feel that fear prevents individuals from ‘caring,’ from embracing what life can offer. By commanding the audience to let go of this fear, the band refers to the relativity of experience: in order to appreciate happiness, an individual must also have experienced sadness. It is the band’s feeling that understanding and interpreting experience relies on relative comparison and therefore unprejudiced receptiveness to a diversity of experience.</p>
-
-                    <h2 class="section-heading">The Elder's Reflection</h2>
-
-                    <p>In the second verse, wherein the narrator retrospectively explains the advice given in the first, Pink Floyd finalizes this practical interpretation of the human experience in what first comes across as a demeaning summary of human life: </p>
-
-                    <blockquote>
-                        For long you live and high you fly <br>
-                        And smiles you'll give and tears you'll cry <br>
-                        And all you touch and all you see <br>
-                        Is all your life will ever be (5-8)
-                    </blockquote>
-
-                    <p>While it may appear that Pink Floyd is pessimistically reducing the journey of human life — success, emotion and sensation — to little more than three lines of three lines of eight words, truly it is the optimistic outlook of their practical philosophy as they encourage the audience to enjoy life by fully embracing the elements that compose it. This verse compounds on the first by further pushing the audience to live beyond the first layer of experience and embrace humanity’s gift of conscious control.</p>
-
-                    <h2 class="section-heading">The Metaphor</h2>
+                    <p>
+                        The first thing you need to do is create a 'base' container where you choose your settings as you please.
+                        Because I am most comfortable with Ubuntu, I will be modifying an ubuntu-16.04-standard_16.04-1_amd64 container.
+                    </p>
+                    <img src="img/proxmox-container-1.PNG" class="img-responsive" alt="Creating the container">
+                    <p>
+                        Whatever choices you make for hardware will not affect the template, so just finish making the container.
+                    </p>
+                    <p>
+                        Enter the container and customize it to your liking. If you would like some suggestions, my first 5 minutes on a server consist of the following:
+                    </p>
+                    <p>
+                        <code class="bash">
+                            sudo pct enter < id >
+                        </code>
+                    </p>
+                    <ul>
+                       <li>
+                           Create a new user account with sudo permissions
+                           <ul>
+                               <li>
+                                   <code class="bash">
+                                       adduser andrew # Create user
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       usermod -aG sudo andrew # Add to sudoers
+                                   </code>
+                                </li>
+                           </ul></pre>
+                       </li> 
+                       <li>
+                           Configure SSH keys. Note that I added my SSH public key in the initial template creation and as such the key is present in root's authorized_keys;
+                           if you would rather not include the key as part of your template then you can just skip the part where I copy the file as well as remove root's entry during the final cleanup steps.
+                           <ul>
+                               <li>
+                                   <code class="bash">
+                                       su - andrew # Change to the user 
+                                   </code>
+                                </li>
+                                <li>
+                                   <code class="bash">
+                                       mkdir -p ~/.ssh # Create ~/.ssh directory
+                                   </code>
+                                </li>
+                                <li>
+                                   <code class="bash">
+                                       chmod 0700 ~/.ssh # Change directory permissions
+                                   </code>
+                                </li>
+                                <li>
+                                   <code class="bash">
+                                       echo > ~/.ssh/authorized_keys # Create authorized_keys file
+                                   </code>
+                                </li>
+                                <li>
+                                   <code class="bash">
+                                       chmod 0644 ~/.ssh/authorized_keys # Change file permissions
+                                   </code>
+                                </li>
+                                <li>
+                                   <code class="bash">
+                                       sudo -S cat /root/.ssh/authorized_keys > ~/.ssh/authorized_keys # Copy SSH key to user
+                                   </code>
+                               </li>
+                           </ul>
+                       </li> 
+                       <li>
+                           User specific settings
+                           <ul>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S apt install vim # Install vim editor
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S update-alternatives --config editor # Set vim as default editor
+                                   </code>
+                               </li>
+                           </ul>
+                       </li> 
+                       <li>
+                           Configure SSH settings
+                           <ul>
+                               <li>
+                                   <code class="bash">
+                                       vim /etc/ssh/sshd_config
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       UsePAM yes
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       port 30000 # Use a non-standard port
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       PermitRootLogin no # Disable root login
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       PasswordAuthentication no # Disable password authentication
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       :w !sudo -S tee %
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S service ssh restart # Restart ssh
+                                   </code>
+                               </li>
+                           </ul>
+                       </li> 
+                       <li>
+                           Configure UFW
+                           <ul>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S ufw default deny incoming # Default deny incoming
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S ufw default allow outgoing # Default allow outgoing
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       sudo ufw allow from 10.0.0.1/24  to any port 30000 # Allow Incoming SSH from Specific IP Address or Subnet
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S ufw allow proto tcp from any to any port 80,443 # Allow All incoming HTTP and HTTPS traffic
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S ufw enable # Enable firewall
+                                   </code>
+                               </li>
+                           </ul>
+                       </li> 
+                       <li>
+                           Enable automatic security updates
+                           <ul>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S apt install unattended-upgrades
+                                   </code>
+                               </li>
+                               <li>
+                                   <code class="bash">
+                                       sudo -S dpkg-reconfigure --priority=low unattended-upgrades
+                                   </code>
+                               </li>
+                           </ul>
+                       </li> 
+                    </ul>
+                       
+                    <h2 class="section-heading">Clean Up</h2>
                     
-                    <p>Using primordial and animalistic terms to construct a metaphor for the audience, Pink Floyd compares the natures of mankind to that of ‘lesser’ beings in order to further push their statement on the human experience. With this comparison, Pink Floyd again highlights man’s unique self-consciousness and ability to take self-control, continuing to press the audience towards experiencing life at its full potential. This construction begins in the fourth of the narrator’s commands, “Look around and choose your own ground” (4), where the purposeful choice in diction, ‘ground,’ recalls a primordial image of territorialism where the audience is reduced down to subhuman, animalistic behavior. This subtle choice introduces the metaphor of animals as a representation of society, foreshadowing the more direct comparison to come. The third verse of Breathe continues the one-sided conversation between narrator and listener by equating the listener to a mindless, lesser being as a form of social criticism: </p>
-
-                    <blockquote>
-                        Run, rabbit, run
-                        Dig that hole, forget the sun 
-                        And when at last the work is done
-                        It’s time to dig another one” (9-12)
-                    </blockquote>
-
-                    <p>Unlike the first verse, where the narrator’s commands address the human listener, the third takes on the voice of instinct, of subconscious action, to address the animal within. In issuing orders necessary for the ‘rabbit’ to sustain itself, the rabbit enters a cycle of endless and thoughtless labor without ambition or purpose. The rabbit is forced to abandon ‘the sun’ in order to survive: a representation of time, the rabbit therefore abandons its memories of the past and aspirations for the future. Pink Floyd contrasts man’s generational learning with the perpetual, meaningless stagnancy of animals; the metaphor upon which this verse is grounded is meant to serve as a warning, a call for the listener to live beyond their instinct.</p>
-
-                    <h2 class="section-heading">Conclusion</h2>
-
-                    <p>It is for good reason that The Dark Side of the Moon has been one of the most successful albums of all time; in the package of innovative, unique and universally pleasing music, Pink Floyd is able to thoroughly pronounce inciteful ideas on the human experience and offer social commentary relevant to their time. In a short four verses, Breathe captures the band’s philosophy on individualism and in utilizing the constructed elements of listener-vocalist relationship and socially critical metaphor the band calls the audience to embrace this philosophy and better their lives.</p>
+                    <p>
+                        Finish off your base container by installing upgrades then cleaning all specific information
+                    </p>
+                    
+                    <ul>
+                        <li>
+                            <code class="bash">
+                                sudo -S apt update
+                                sudo -S apt upgrade # Install available upgrades
+                            </code>
+                        </li>
+                        <li>
+                            <code class="bash">
+                                sudo -S apt clean # Clean temp data
+                                sudo -S apt autoclean
+                                sudo -S apt autoremove # Remove unused packages
+                            </code>
+                        </li>
+                        <li>
+                            <code class="bash">
+                                sudo -S rm /etc/resolv.conf # Strip DNS settings
+                                sudo -S rm /etc/hostname # Strip hostname
+                            </code>
+                        </li>
+                        <li>
+                            <code class="bash">
+                                exit # Exit user
+                            </code>
+                        </li>
+                        <li>
+                            <code class="bash">
+                                exit # Exit container
+                            </code>
+                        </li>
+                        <li>
+                            <p>Return to the Proxmox WebUI and remove the network interfaces from the container</p>
+                            <img src="img/proxmox-container-3.PNG" class="img-responsive" alt="Creating the container">
+                        </li>
+                    </ul>
+                    
+                    <h2 class="section-heading">Backup to Template</h2>
+                    
+                    <ul>
+                        <li>
+                            <code class="bash">
+                                pct stop < id > # Stop container
+                            </code>
+                        </li>
+                        <li>
+                            <p>Again in the WebUI, create a backup of your container</p>
+                            <img src="img/proxmox-container-4.PNG" class="img-responsive" alt="Creating the container">
+                        </li>
+                        <li>
+                            <p>Back in the terminal, find your most recent backup</p>
+                            <p>The backup archive will be called 'vzdump-lxc-< id >-< date >.tar.gz' in the '/var/lib/vz/dump/' directory</p>
+                            <code class="bash">
+                                cd /var/lib/vz/dump/ 
+                            </code>
+                        </li>
+                        <li>
+                            <p>Rename and move this archive</p>
+                            <code class="bash">
+                                mv vzdump-lxc-< id >-< date >.tar.gz /var/lib/vz/template/cache/ubuntu-16.04-custom_16.04-1_amd64.tar.gz
+                            </code>
+                        </li>
+                    </ul>
+                    
+                    <p>
+                        When you go to make a new container, verify that your template is displayed as an option. 
+                    </p>
+                    
+                    <img src="img/proxmox-container-5.PNG" class="img-responsive" alt="Creating the container">
                     
                 </div>
             </div>
@@ -169,17 +383,20 @@
         </div>
     </footer>
 
+
+
     <!-- jQuery -->
     <script src="../../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="../../js/jqBootstrapValidation.js"></script>
+    
+    <!-- Syntax highlighting Javascript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
 
     <!-- Theme JavaScript -->
-    <script src="../../js/clean-blog.min.js"></script>
+    <script src="../../js/clean-blog.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
 </body>
 
