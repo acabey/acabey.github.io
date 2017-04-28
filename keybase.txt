@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/acabey
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://acabey.xyz
+  * I am acabey (https://keybase.io/acabey) on keybase.
+  * I have a public key ASBDO7QpVOCK3wimO0oOUpIuRknp3budKzMNoT35Khvcego
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120433bb42954e08adf08a63b4a0e52922e4649e9ddbb9d2b330da13df92a1bdc7a0a",
+            "host": "keybase.io",
+            "kid": "0120433bb42954e08adf08a63b4a0e52922e4649e9ddbb9d2b330da13df92a1bdc7a0a",
+            "uid": "a00baffbed731c834dbafae0309fd719",
+            "username": "acabey"
+        },
+        "service": {
+            "hostname": "acabey.xyz",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.21"
+    },
+    "ctime": 1493350792,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1493350735,
+        "hash": "1519d6ec2c2034b56fcd0394e0d944a791834ec320025cfc0b6cea17de40dd2bc52975dba1dfa902fc817a6b0acd7de2b20c8d534fbbb4afcba6cec80c52b759",
+        "seqno": 1042690
+    },
+    "prev": "2eb3cbe87b387a2b100a17fd1f6afe6337c58cd0cc4fc73dbd4715134723e699",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgQzu0KVTgit8IpjtKDlKSLkZJ6d27nSszDaE9+Sob3HoKp3BheWxvYWTFAvF7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwNDMzYmI0Mjk1NGUwOGFkZjA4YTYzYjRhMGU1MjkyMmU0NjQ5ZTlkZGJiOWQyYjMzMGRhMTNkZjkyYTFiZGM3YTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNDMzYmI0Mjk1NGUwOGFkZjA4YTYzYjRhMGU1MjkyMmU0NjQ5ZTlkZGJiOWQyYjMzMGRhMTNkZjkyYTFiZGM3YTBhIiwidWlkIjoiYTAwYmFmZmJlZDczMWM4MzRkYmFmYWUwMzA5ZmQ3MTkiLCJ1c2VybmFtZSI6ImFjYWJleSJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoiYWNhYmV5Lnh5eiIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjIxIn0sImN0aW1lIjoxNDkzMzUwNzkyLCJleHBpcmVfaW4iOjUwNDU3NjAwMCwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE0OTMzNTA3MzUsImhhc2giOiIxNTE5ZDZlYzJjMjAzNGI1NmZjZDAzOTRlMGQ5NDRhNzkxODM0ZWMzMjAwMjVjZmMwYjZjZWExN2RlNDBkZDJiYzUyOTc1ZGJhMWRmYTkwMmZjODE3YTZiMGFjZDdkZTJiMjBjOGQ1MzRmYmJiNGFmY2JhNmNlYzgwYzUyYjc1OSIsInNlcW5vIjoxMDQyNjkwfSwicHJldiI6IjJlYjNjYmU4N2IzODdhMmIxMDBhMTdmZDFmNmFmZTYzMzdjNThjZDBjYzRmYzczZGJkNDcxNTEzNDcyM2U2OTkiLCJzZXFubyI6OCwidGFnIjoic2lnbmF0dXJlIn2jc2lnxEAYCbQjdyXQRjT7QeC96e9E+ImYs7foGdZZdhuy3VtXdocb28KI3SFxsTHr7K3Y/+6CYE/K2tqLfTOjM2SqUIIMqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQgjNoOvJWhqC93s9sC89seQLCL/f9CibwBldgCWTp169yjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/acabey
+
+==================================================================
