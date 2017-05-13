@@ -467,3 +467,20 @@ body {
   border-radius: 5px;
   background-color: rgba(112,128,144,.4) !important;
 }
+
+.popup-gallery {
+    max-height: 350;
+    background-color: #222222;
+  }
+
+@media (min-width: 768px) {
+  .popup-gallery {
+    max-height: 500;
+  }
+}
+
+@media (min-width: 992px) {
+  .popup-gallery {
+    max-height: 650;
+  }
+}
