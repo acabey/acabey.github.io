@@ -90,47 +90,128 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     
-                    <h2 class="section-heading">Introduction</h2>
+                    <h2 class="section-heading">What is a Reverse Proxy?</h2>
                     
-                    <p>Pink Floyd’s 1973 album, The Dark Side of the Moon is one of the most critically acclaimed, best-selling and heavily scrutinized works of all time; developed over the course of a year with intent to clarify the messages of previous albums, The Dark Side of the Moon offers insight on the human experience (as perceived by the band) by exploring various stages of modern life. The album’s second track, Breathe, begins in the stage of childhood where, through the rhetorically crafted relationship between vocalist and listener as well purposeful metaphor, Pink Floyd implores the audience to truly experience the full potential of human life rather than thoughtlessly sustaining oneself.</p>
+                    <p>Like many Homelabbers on a residential connection, I only have a single public IP to work with, and with this comes the challenge of hosting several services behind this single IP. While on my internal network I have several VMs (internal wiki, Plex, Gitlab, website, etc.) accessible to my LAN, by conventional hosting methods I could only make one of these available through my public IP at a time.</p>
+                    
+                    <p>In comes reverse proxying, where you expose a single server to the external network (public IP), and it will then redirect that traffic to where it needs to be depending on the desired host.</p>
+                    
+                    <p>For example, someone on the internet may request blog.acabey.xyz, the request will reach my proxy server, then based on the desired host (blog.acabey.xyz), the server will pull internally from my blog host (blog.eden.localdomain on my internal domain) and feed that content right back out to the internet client. Cool stuff!</p>
+                    
+                    <p>While there are a ton of tutorials on how to configure a reverse proxy with nginx, I fancy myself an apache man and took it to use my webserver of choice instead.</p>
+                    
+                    <p>You can use reverse proxying to host multiple services, redirect ports, and whole bunch of other magic. I will cover setting up a basic web service behind a proxy and enabling SSL with LetsEncrypt.</p>
+                    
+                    <h4>What you will need</h4>
+                    
+                    <ul>
+                        <li>A public IP through which you are allowed you to forward ports 80 and 443</li>
+                        <li>A domain / subdomain name for each internal service</li>
+                        <li>Two servers/ VMs/ containers each running apache, an unconfigured reverseproxy and a webservice serving content to your internal network on port 80</li>
+                    </ul>
+                    
+                    <h2 class="section-heading">Setting up your domain</h2>
 
-                    <h2 class="section-heading">Building the Relationship</h2>
+                    <p>In order to reach your service through your domain/subdomain, set up an A record pointing towards your public IP. This is entirely dependent on your DNS service, so I’ll leave this as an exercise to the reader.</p>
 
-                    <p>Through rhetorical choices in vocal expression and verse structure, Pink Floyd crafts a relationship between the listener and vocalist where the artist is interpreted as a guiding parental figure and the audience a child naively entering the world; it is through this relationship that Pink Floyd is able to call the audience to action as a child would head the retrospective advice of an elder reflecting on their own memories and experiences. As the second track in the album, Breathe relies on the context set by previous track, Speak to Me, which consists of a constant heartbeat leading to a scream to begin Breathe. This combination is interpreted as the beginning of life with childbirth. Recurring elements in the album are the choices made in vocal expression, where the lead vocalist maintains a slow, consistent rhythm, clear pronunciation, and stable volume; this amounts to the song coming across not as verbally-backed music, but rather as musically-backed spoken word where the vocalist is a narrator, not a singer. Breathe’s structure consists of four verses, the first and third being commands directed to the audience while the second and fourth are reflective explanations of these commands: heeding to an image of generation cycles, this structure pays homage to human progress through the accumulation of experience and further strengthens the narrator’s role as a parental guide.</p>
+                    <h2 class="section-heading">Setting up your NAT</h2>
 
-                    <h2 class="section-heading">Using the Relationship</h2>
+                    <p>The first step on your end is to forward your incoming web traffic to your reverseproxy server. Again, this step is entirely dependent on your network / firewall configuration, but should be simple enough. When you are done, you should see the apache landing page (being served by your reverse proxy server) when you access any of your domains.</p>
 
-                    <p>Operating with this relationship, Pink Floyd pushes their statement on human experience. The lyrics begin with social criticism wrapped in two seemingly innocuous commands: “Breathe, breathe in the air / Don’t be afraid to care” (1-2). The blunt and superficially obvious meaning of ‘Breathe’ is meant to imply that there is a deeper, unseen level to the very basic processes of life which humans have come to take for granted: Pink Floyd means to express that to every aspect of life, man is capable of entering a deeper level of experience, and in correcting the audience the band criticizes society for its failure to embrace this gift of nature. While breathing can be done subconsciously, man is unique in his ability to take even the most basic action into conscious control; man is able to operate with purpose. The command is a call to action for the audience to reflect on their life down to the most basic process as breathing, and take advantage of everything that humanity has to offer by operating with purpose. The band contests that living in this way is the ‘true’ human experience. This subtle yet powerful implication is pushed further in the second command where Pink Floyd orders the audience not to shield themselves from the human experience: this line is a reflection of the band’s observations of mankind where they feel that fear prevents individuals from ‘caring,’ from embracing what life can offer. By commanding the audience to let go of this fear, the band refers to the relativity of experience: in order to appreciate happiness, an individual must also have experienced sadness. It is the band’s feeling that understanding and interpreting experience relies on relative comparison and therefore unprejudiced receptiveness to a diversity of experience.</p>
+                    <h2 class="section-heading">Basic Proxying</h2>
 
-                    <h2 class="section-heading">The Elder's Reflection</h2>
-
-                    <p>In the second verse, wherein the narrator retrospectively explains the advice given in the first, Pink Floyd finalizes this practical interpretation of the human experience in what first comes across as a demeaning summary of human life: </p>
+                    <p>Whether or not you have any experience configuring apache virtualhosts, setting up a basic proxy is a piece of cake. You’ll have to enable a couple modules on your server</p>
 
                     <blockquote>
-                        For long you live and high you fly <br>
-                        And smiles you'll give and tears you'll cry <br>
-                        And all you touch and all you see <br>
-                        Is all your life will ever be (5-8)
+                        a2enmod proxy proxy_http proxy_ajp rewrite deflate headers proxy_balancer proxy_connect proxy_html
                     </blockquote>
-
-                    <p>While it may appear that Pink Floyd is pessimistically reducing the journey of human life — success, emotion and sensation — to little more than three lines of three lines of eight words, truly it is the optimistic outlook of their practical philosophy as they encourage the audience to enjoy life by fully embracing the elements that compose it. This verse compounds on the first by further pushing the audience to live beyond the first layer of experience and embrace humanity’s gift of conscious control.</p>
-
-                    <h2 class="section-heading">The Metaphor</h2>
                     
-                    <p>Using primordial and animalistic terms to construct a metaphor for the audience, Pink Floyd compares the natures of mankind to that of ‘lesser’ beings in order to further push their statement on the human experience. With this comparison, Pink Floyd again highlights man’s unique self-consciousness and ability to take self-control, continuing to press the audience towards experiencing life at its full potential. This construction begins in the fourth of the narrator’s commands, “Look around and choose your own ground” (4), where the purposeful choice in diction, ‘ground,’ recalls a primordial image of territorialism where the audience is reduced down to subhuman, animalistic behavior. This subtle choice introduces the metaphor of animals as a representation of society, foreshadowing the more direct comparison to come. The third verse of Breathe continues the one-sided conversation between narrator and listener by equating the listener to a mindless, lesser being as a form of social criticism: </p>
+                    <p>Disable the default site</p>
+                    
+                    <blockquote>a2dissite 000-default</blockquote>
+
+                    <p>Now you can make the choice, you can either create a virtual site for each service you proxy, or put them all in a single apache site. I prefer one for each internal service, so I will create a new site configuration</p>
+                    
+                    <blockquote>vim /etc/apache2/sites-available/webservice-eden-localdomain.conf</blockquote>
+                    
+                    <p>Inside this site configuration, create a new virtualhost listening on port 80. For more information on configuring a virtualhost, see the <a href="https://httpd.apache.org/docs/current/vhosts/examples.html">apache docs.</a> There are a ton of different configuration options</p>
+                    
+                    <blockquote>&ltVirtualhost *:80&gt</blockquote>
+                    
+                    <p>Give this virtualhost a ServerName matching your target domain name</p>
+                    
+                    <blockquote>ServerName 'webservice.acabey.xyz'</blockquote>
+                    
+                    <p>Now the actual proxying (if you don’t use an internal DNS, just use the static IP of your server)</p>
+                    
+                    <blockquote>
+                        ProxyPreserveHost On <br>
+                        ProxyPass / 'http://webservice.eden.localdomain/' <br>
+                        ProxyPassReverse / ''http://webservice.eden.localdomain''
+                    </blockquote>
+                    
+                    <p>Your basic, insecure virtualhost should look something like this</p>
+                    
+                    <blockquote>
+                        &ltVirtualHost *:80&gt <br>
+                            &#9;ServerName 'webservice.acabey.xyz'<br>
+                            &#9;ProxyPreserveHost On<br>
+                            &#9;ProxyPass / 'http://webservice.eden.localdomain/'<br>
+                            &#9;ProxyPassReverse / ''http://webservice.eden.localdomain''<br>
+                        &lt/VirtualHost&gt
+                    </blockquote>
+                    
+                    <h2 class="section-heading">Internal SSL (Optional)</h2>
+                    
+                    <p>Of course, you notice that there is absolutely no SSL/TLS going on here, which is no bueno. Solid security in a reverse proxy system should look like this</p>
 
                     <blockquote>
-                        Run, rabbit, run
-                        Dig that hole, forget the sun 
-                        And when at last the work is done
-                        It’s time to dig another one” (9-12)
+                        Internet ←→ Reverse Proxy (LetsEncrypt SSL) ←→ Internal Service (self-signed SSL)
                     </blockquote>
 
-                    <p>Unlike the first verse, where the narrator’s commands address the human listener, the third takes on the voice of instinct, of subconscious action, to address the animal within. In issuing orders necessary for the ‘rabbit’ to sustain itself, the rabbit enters a cycle of endless and thoughtless labor without ambition or purpose. The rabbit is forced to abandon ‘the sun’ in order to survive: a representation of time, the rabbit therefore abandons its memories of the past and aspirations for the future. Pink Floyd contrasts man’s generational learning with the perpetual, meaningless stagnancy of animals; the metaphor upon which this verse is grounded is meant to serve as a warning, a call for the listener to live beyond their instinct.</p>
+                    <p>Ideally, you should set up an internal, self-signed CA that you add to all the machines on your internal network, and use a certificate signed by this CA on your internal webserver. From there, the only things you have to change are the ProxyPass directives in your virtualhost to https rather than http.</p>
 
-                    <h2 class="section-heading">Conclusion</h2>
+                    <h2 class="section-heading">Configuring LetsEncrypt</h2>
 
-                    <p>It is for good reason that The Dark Side of the Moon has been one of the most successful albums of all time; in the package of innovative, unique and universally pleasing music, Pink Floyd is able to thoroughly pronounce inciteful ideas on the human experience and offer social commentary relevant to their time. In a short four verses, Breathe captures the band’s philosophy on individualism and in utilizing the constructed elements of listener-vocalist relationship and socially critical metaphor the band calls the audience to embrace this philosophy and better their lives.</p>
+                    <p>To really step up your security game, we will use LetsEncrypt to establish SSL with our internet users.</p>
+
+                    <p>There are countless guides on how to use LetsEncrypt, but to keep it brief (assuming a Debian/ Ubuntu system)</p>
+
+                    <blockquote>
+                        apt install python-letsencrypt-apache<br>
+                        sudo letsencrypt --apache -d webservice.acabey.xyz
+                    </blockquote>
+                    
+                    <p>In the interactive window, be sure to Allow both HTTP and HTTPS connections, we will fix this in a second. Go back into your apache site config and notice that you should now have a virtualhost listening on port 443.<p>
+ 
+                    <p>Before we continue with that, you should first redirect http to https. Go to the virtualhost listening on port 80 and cut your proxying directives down to the new 443 virtualhost. In place of this, just add a permanent redirect to the https enabled site</p>
+                    
+                    <blockquote>
+                        Redirect Permanent / https://webservice.acabey.xyz/<br>
+                        Remove the Alias directive
+                    </blockquote>
+                    
+                    <h2 class="section-heading">Proxying SSL</h2>
+                    
+                    <p>Although you are very, very close, there is some magic when it comes to proxying SSL traffic. In the 443 virtualhost, add a global location section, which we will use to apply some headers</p>
+                    
+                    
+                    <blockquote>
+                        <Location "/"><br>
+                            &#9;RequestHeader set X-Forwarded-Proto https<br>
+                            &#9;RequestHeader set X-Forwarded-Ssl on<br>
+                            &#9;RequestHeader set X-Url-Scheme https<br>
+                        </Location>
+                    </blockquote>
+                    
+                    <p>Make sure that your original proxy settings are in the 443 virtualhost. By the end, your site apache site configuration should look something like this:                    </p>
+                    
+                    
+                    <p>Try reaching your domain!</p>
+                    
+                    <h2 class="section-heading">A Note on Internal DNS</h2>
+                    
+                    <p>In the event that your site does not load from the external domain name, this is likely caused by lack of support for NAT reflection on your router. Try manually overriding your external domain name (eg. webservice.acabey.xyz) to the IP of your reverse proxy server within your internal DNS settings. If you are on pfSense, you can either try enabling NAT reflection or you can implement <a href="https://doc.pfsense.org/index.php/Why_can%27t_I_access_forwarded_ports_on_my_WAN_IP_from_my_LAN/OPTx_networks">Split DNS</a></p>
                     
                 </div>
             </div>
