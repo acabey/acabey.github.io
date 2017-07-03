@@ -70,7 +70,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/space-bg.jpg')">
+    <header class="intro-header" style="background:linear-gradient(rgba(112,128,144,.6), rgba(112,128,144,.6)),url('img/apache4.png');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -152,13 +152,15 @@
                     
                     <p>Your basic, insecure virtualhost should look something like this</p>
                     
+                    
+                    
                     <blockquote>
-                        &ltVirtualHost *:80&gt <br>
+                        &lt VirtualHost *:80 &gt <br>
                             &#9;ServerName 'webservice.acabey.xyz'<br>
                             &#9;ProxyPreserveHost On<br>
                             &#9;ProxyPass / 'http://webservice.eden.localdomain/'<br>
                             &#9;ProxyPassReverse / ''http://webservice.eden.localdomain''<br>
-                        &lt/VirtualHost&gt
+                        &lt /VirtualHost &gt
                     </blockquote>
                     
                     <h2 class="section-heading">Internal SSL (Optional)</h2>
@@ -197,14 +199,16 @@
                     
                     
                     <blockquote>
-                        <Location "/"><br>
+                        &lt Location "/" &gt<br>
                             &#9;RequestHeader set X-Forwarded-Proto https<br>
                             &#9;RequestHeader set X-Forwarded-Ssl on<br>
                             &#9;RequestHeader set X-Url-Scheme https<br>
-                        </Location>
+                        &lt /Location &gt
                     </blockquote>
                     
-                    <p>Make sure that your original proxy settings are in the 443 virtualhost. By the end, your site apache site configuration should look something like this:                    </p>
+                    <p>Make sure that your original proxy settings are in the 443 virtualhost. By the end, your site apache site configuration should look something like this: </p>
+                    
+                    <image src="img/reverse-proxy-config-orig.png" alt="Complete configuration" class="img-responsive"></image>
                     
                     
                     <p>Try reaching your domain!</p>
