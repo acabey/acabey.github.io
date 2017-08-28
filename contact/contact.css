@@ -1,0 +1,169 @@
+html, body {
+	background: #fff;
+	color: #3a3a3a;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	font-family: 'LatoLatinWebLight', sans-serif;
+	font-weight: 400;
+	height: 100%;
+	margin: 0 auto;
+	max-width: 1280px;
+	width: 80%;
+}
+
+section, footer {
+	display: inline-block;
+	width: 100%;
+}
+
+h1 {
+	color: #3a3a3a;
+	font-family: 'LatoLatinWeb', sans-serif;
+	font-size: 60px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+	margin: 0;
+}
+
+h2 {
+	font-size: 22px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+
+a {
+	color: #3a3a3a;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #34A9FF;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+li {
+	font-size: 16px;
+	padding-bottom: 16px;
+}
+
+/* Header
+/*-----------------------*/
+header {
+}
+
+.info {
+	padding-top: 60px;
+}
+
+.avatar {
+    width:125px;
+    height: auto;
+    margin-right: 20px;
+}
+
+
+.navbar {
+    width: 80%;
+    overflow: hidden;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-align: center;
+	align-items: center;
+	padding: 30px;
+	margin-left: -32px;
+}
+
+.navbar .navbar-right {
+	display: -webkit-box;
+	display: flex;
+	margin-left: auto;
+	position: relative;
+	top: -2px
+}
+
+.navbar .navbar-right a {
+	display: inline-block;
+	margin-left: 20px;
+	font-size: 22px;
+	text-decoration: none
+}
+
+
+/* About
+/*-----------------------*/
+.about {
+	margin-bottom: 30px;
+}
+
+.about p {
+	color: #3a3a3a;
+	font-size: 18px;
+	line-height: 22px;
+}
+
+.about span {
+	font-weight: 600;
+}
+
+.bio {
+	width: 80%;
+	text-align: justify;
+}
+
+
+/* Footer
+/*-----------------------*/
+.copyright {
+	border-top: 1px solid #999;
+	font-size: 14px;
+	margin: 50px auto 20px auto;
+	padding-top: 20px;
+}
+
+/* Media Queries
+/*-----------------------*/
+@media (max-width: 640px) {
+	.avatar {
+		width: 66px;
+	}
+
+	h1 {
+		font-size: 25px;
+	}
+
+	h1 span {
+		display: block;
+	}
+
+	.bio {
+		width: 100%;
+	}
+}
+
+@media (max-width: 640px) and (orientation:landscape) {
+	.info {
+		padding-top: 50px;
+	}
+}
+
+@media (max-width: 480px) {
+	.container {
+		width: 90%;
+	}
+
+	.info {
+		padding-top: 50px;
+	}
+
+}
