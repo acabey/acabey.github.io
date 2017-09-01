@@ -1,6 +1,6 @@
 # acabey.xyz
 
-My portfolio site built using Bootstrap, font-awesome, jquery and scroll reveal from the base of Startbootstrap's 'Creative' theme.
+My portfolio site built using pure HTML+CSS and no Javascript (NoJS/LibreJS friendly).
 
 Cloud9 was used as a development environment throughout.
 
