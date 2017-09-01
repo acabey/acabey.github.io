@@ -8,6 +8,6 @@ The site is entirely made up of static pages and hosted through Github pages wit
 
 ![alt tag](https://github.com/acabey/acabey.github.io/raw/master/assets/img/landing-screenshot.png)
 
-![alt tag](https://github.com/acabey/acabey.github.io/raw/master/assets/img/about-skills-screenshot.png)
+![alt tag](https://github.com/acabey/acabey.github.io/raw/master/assets/img/contact-screenshot.png)
 
 See the site live at [acabey.xyz](https://acabey.xyz) 
