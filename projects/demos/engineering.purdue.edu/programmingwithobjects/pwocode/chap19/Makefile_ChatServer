@@ -1,0 +1,38 @@
+## This code example is from the following source:
+##
+## Book Title:  Programming with Objects, A Comparative Presentation
+##              of Object-Oriented Programming with C++ and Java
+##
+## Book Author:    Avinash Kak
+##
+## Chapter:     Chapter 19  Network Programming
+##
+## Section:     Section 19.4  Server Sockets In C++ (Qt)
+##
+
+
+
+#Makefile_ChatServer
+
+CC=g++
+
+LDLIBS=-L$(QTDIR)/lib -lqt
+
+CFLAGS=-g -I$(QTDIR)/include 
+
+ChatServer: moc_ChatServer.o ChatServer.o
+	$(CC) $(LDLIBS)  -o ChatServer moc_ChatServer.o ChatServer.o 
+
+moc_ChatServer.cc: ChatServer.h
+	moc -o moc_ChatServer.cc ChatServer.h
+
+moc_ChatServer.o: moc_ChatServer.cc
+	$(CC) -c $(CFLAGS) -O2 moc_ChatServer.cc
+
+ChatServer.o: ChatServer.cc ChatServer.h
+	$(CC) -c $(CFLAGS) -O2 ChatServer.cc
+
+clean:
+	rm -f ChatServer
+	rm -f *.o
+	rm -f moc*.*

@@ -1,0 +1,499 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Errata for &quot;Scripting with Objects&quot;</title>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+
+<STYLE type="text/css">
+    TABLE.mytable
+    {
+        border-style: solid;
+        border-color: blue;
+        border-width: 5px;
+        border-collapse: separate;
+        border-spacing: 2px;
+        font-family:sans-serif;
+        font-size:12pt;
+        background-color:white;
+    }
+    TABLE.mytable TH
+    {
+        border: 1px solid gray;
+        padding: 5px;
+    }
+
+    TABLE.mytable TD
+    {
+        border: 1px solid gray;
+        padding: 5px;
+    }
+    P.tableheader {text-align: center}
+    HR.redline 
+    {
+        width:100%;
+        height:2px;
+        border: 2px solid red;
+    }    
+</STYLE>
+
+</head>
+<body>
+<CENTER>
+<b><font size=5>
+ERRATA<br>
+for<br>
+Scripting with Objects
+</font></b>
+</CENTER>
+
+<PRE>
+
+</PRE>
+
+<pre></pre>
+<HR class="redline">
+<br>
+<font color=red>Entries made on December 18, 2010:</font> &nbsp;&nbsp;&nbsp;&nbsp;pages 74, 75, 111, and 887
+<br>
+<br>
+<font color=red>Entries made on August 2, 2012:</font> &nbsp;&nbsp;&nbsp;&nbsp;pages 115 (two entries), 151, 547, 780, and 862
+<br>
+<br>
+<font color=red>Entry made on August 12, 2013:</font> &nbsp;&nbsp;&nbsp;&nbsp;page 131 
+<br>
+<br>
+<font color=red>Entries made on June 15, 2015:</font> &nbsp;&nbsp;&nbsp;&nbsp;pages 239 (two entries), 704, 1091
+<br>
+<br>
+<font color=red>Entry made on January 28, 2016:</font> &nbsp;&nbsp;&nbsp;&nbsp;page 68 
+<br>
+<br>
+<HR class="redline">
+<pre>
+</pre>
+
+
+
+<PRE>
+
+</PRE>
+<CENTER>
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 68:</font>&nbsp;&nbsp; Second line after the code line in upper half of the page
+</TH>
+</TR>
+<TR>
+<TH class="myth">line as currently set:</TH><TD class="mytd" NOWRAP ALIGN=left>
+array <font color="red"><code>@ARGS</code></font>. The line input operator <code>&lt;&gt;</code> would then read from these files named in
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+array <font color="blue"><code>@ARGV</code></font>. The line input operator <code>&lt;&gt;</code> would then read from these files named in
+</TR>
+</TABLE>
+</CENTER>
+
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 74:</font>&nbsp;&nbsp; Second line from the top of the page
+</TH>
+</TR>
+<TR>
+<TH class="myth">line as currently set:</TH><TD class="mytd" NOWRAP ALIGN=left>
+is presented in Section 2.9.<font color="red">4</font>.)
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+is presented in Section 2.9.<font color="blue">3</font>.)
+</TR>
+</TABLE>
+<font color=brown size=-1>The above error was reported by
+Lakhinder Walia (lakhindr at yahoo.com)</font>
+</CENTER>
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 75:</font>&nbsp;&nbsp; Second line from the bottom of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+my $buf; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(E)
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+my $buf<font color="blue">f</font>; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#(E)
+</TD>
+</TR>
+</TABLE>
+<font color="brown" size="-1">The above error was reported by
+Lakhinder Walia (lakhindr at yahoo.com)</font>
+</CENTER>
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 111:</font>&nbsp;&nbsp; Line 9 from the top of the page
+</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+<code>(eq, ne<font color="red">q</font>, lt, le, gt, ge)</code> happen to be nonstrings.  Perl will try to interpret the
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+<code>(eq, ne, lt, le, gt, ge)</code> happen to be nonstrings.  Perl will try to interpret the
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 115:</font>&nbsp;&nbsp;middle of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>three lines as currently set:</TH><TD NOWRAP ALIGN=left>
+out the accumulator in line (H).  We see that the <font color="red">last field</font> spit out by the accumulator <br> <font color="red">is</font> truncated. <font color="red">That is for reasons explained in Problem 8 in the Homework section of <br> Chapter 4.</font> Just to show another way of calling <code>formline()</code>, our Example 4 parallels
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+out the accumulator in line (H).  We see that the <font color="blue">field values</font> spit out by the accumulator <br> <font color="blue">are</font> truncated.  Just to show another way of calling <code>formline()</code>, our Example 4 parallels
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 115:</font>&nbsp;&nbsp;Footnote 66 at the bottom of the page</TH>
+</TR>
+<TR>
+<TD>Delete the footnote numbered 66 at the bottom of the
+page. At the time of final production, the problem referred
+<br>
+to in the footnote was dropped from the book manuscript.
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 131:</font>&nbsp;&nbsp;Seventh line from the bottom of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+As briefly mentioned in Section <font color="red">2.9.4</font>, when a global variable is declared <code>local</code>, its
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+As briefly mentioned in Section <font color="blue">2.9.3</font>, when a global variable is declared <code>local</code>, its
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 151:</font>&nbsp;&nbsp;First line at the top of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+<code>die "file $filename has zero size\n" <font color="red">if</font> -s $filename;</code> 
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+<code>die "file $filename has zero size\n" <font color="blue">unless</font> -s $filename;</code> 
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 239:</font>&nbsp;&nbsp;The four lines after the code statement in the middle of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>the four lines as currently set:</TH><TD NOWRAP ALIGN=left>
+causes the parent class's <code>__add__</code> to be invoked for the addition operation. <font color="red">This<br> syntax also ensures that if this operation were to return any object at all, it will be an<br> instance of the subclass type, that is of type <code>size_limited_int</code>.<sup>64</sup>  Finally, line (J)<br> forces a range check on the result returned by the addition operation in line (I).</font>
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+causes the parent class's <code>__add__</code> to be invoked for the addition operation. <font color="blue">The<br> object returned by this call in our example is of type <code>int</code>.<sup>64</sup>  Finally, line (J) casts<br> the returned object to an object of type <code>size_limited_int</code> and, through this<br> step, forces a range check on the value of <code>res</code>.</font>
+</TD>
+</TR>
+</TABLE>
+<font color=brown size=-1>The above error was reported by Jean-Michel Fourquie from microvision.com</font>
+</CENTER>
+
+<PRE>
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 239:</font>&nbsp;&nbsp;The last two lines of the footnote 64 at the bottom of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>the last two lines of the footnote<br> as currently set:</TH><TD NOWRAP ALIGN=left>
+<font color="red">but now the object returned by the addition operation would be of type <code>int</code> as opposed to<br> <code>size_limited_int</code>.</font>
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+<font color="blue">This syntax invokes a method of a specific class, as opposed to initiating search for the<br> designated method in the inheritance tree that converges on the subclass in question.</font>
+</TD>
+</TR>
+</TABLE>
+<font color=brown size=-1>The above error was reported by Jean-Michel Fourquie from microvision.com</font>
+</CENTER>
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 547:</font>&nbsp;&nbsp;Second line of the last paragraph</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+nothing with class <code>X</code>.  But then in line (I) we assign a value to <code>X.foo</code> even though
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+nothing <font color="blue">to do</font> with class <code>X</code>.  But then in line (I) we assign a value to <code>X.foo</code> even though
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 704:</font>&nbsp;&nbsp;Second line of the second paragraph</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+ception handler. <font color="red">This</font> is, the handler that does not name an exception class in the
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+ception handler. <font color="blue">That</font> is, the handler that does not name an exception class in the
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 780:</font>&nbsp;&nbsp;Code line labeled (F) in the middle of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+<code>mw2.title( "First Window" )</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code> #(F)</code>
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+<code>mw2.title( "Second Window" )</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code> #(F)</code>
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 862:</font>&nbsp;&nbsp;Fifth line from the top of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+concurrency <font color="red">bit</font> it will be limited by the poor quality of thread cooperation. Thread
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+concurrency <font color="blue">but</font> it will be limited by the poor quality of thread cooperation. Thread
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 887:</font>&nbsp;&nbsp;First line of the second paragraph</TH>
+</TR>
+<TR>
+<TH ALIGN=left>line as currently set:</TH><TD NOWRAP ALIGN=left>
+<code>@dataObj</code> in line (I) of <code>NoInterference.pl</code> for the elimination of interference.
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:</TH><TD NOWRAP ALIGN=left>
+<code>@dataObj</code> in line (I) of <code>No<font color="blue">Thread</font>Interference.pl</code> for the elimination of interference.
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<PRE>
+
+
+</PRE>
+<CENTER>
+<!-- <TABLE BORDER=5 CELLPADDING=4 CELLSPACING=2 BORDERCOLOR=blue> -->
+<TABLE class="mytable">
+<TR>
+<TH COLSPAN=2><font color="blue" size="+1" >Page 1091:</font>&nbsp;&nbsp;Code lines labeled (a) and (b) in the middle of the page</TH>
+</TR>
+<TR>
+<TH ALIGN=left>lines as currently set:</TH><TD NOWRAP ALIGN=left>
+<code>def ShallowParse(XML_document)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code> #(a)</code><br>
+<font color="red">
+<code>return re.findall(XML_SPE, XML_document)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code> #(b)</code>
+</font>
+</TD>
+</TR>
+<TR>
+<TH ALIGN=left>corrected version:<br><font size="-1">(the second line needs to<br> be indented vis-a-vis the first)</font></TH><TD NOWRAP ALIGN=left>
+<code>def ShallowParse(XML_document)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code> #(a)</code><br>
+<font color="blue">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp<code>return re.findall(XML_SPE, XML_document)</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code> #(b)</code>
+</font>
+</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<!--
+<p>
+<hr>
+<HR SIZE=8 WIDTH=90% SHADE>
+<CENTER>
+Back to the home page for <A HREF="https://engineering.purdue.edu/kak/scriptingwithobjects/"> <b><font size=4 strong> Scripting with Objects</font> </b> </A>
+</CENTER>
+<HR SIZE=8 WIDTH=90% SHADE>
+<HR>
+-->
+
+<pre>
+
+</pre>
+<br>
+<hr size="8" noshade>
+<B><I><font size="-2">Last updated: June 15, 2015</font></I></B>
+
+<!--
+<p>
+    <a href="http://validator.w3.org/check?uri=referer">
+        <img src="http://www.w3.org/Icons/valid-html401"
+        alt="Valid HTML 4.01 Transitional" height="31" width="88"></a>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!"> </a>
+</p>
+-->
+
+<p>
+    <a href="http://validator.w3.org/check?uri=https://Engineering.Purdue.Edu/kak/scriptingwithobjects/errata.html"><img
+        src="/kak/w3c/valid-html401.png"
+        alt="Valid HTML 4.01 Transitional" height="31" width="88"></a>
+    <a href="http://jigsaw.w3.org/css-validator/validator?uri=https://Engineering.Purdue.Edu/kak/scriptingwithobjects/errata.html">
+        <img style="border:0;width:88px;height:31px"
+            src="/kak/w3c/vcss-blue.gif"
+            alt="Valid CSS!"> </a>
+</p>
+
+
+</body>
+</html>
+
+
+
+

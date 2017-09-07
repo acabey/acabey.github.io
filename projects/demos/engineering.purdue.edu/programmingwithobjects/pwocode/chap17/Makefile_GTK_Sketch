@@ -1,0 +1,26 @@
+## This code example is from the following source:
+##
+## Book Title:  Programming with Objects, A Comparative Presentation
+##              of Object-Oriented Programming with C++ and Java
+##
+## Book Author:    Avinash Kak
+##
+## Chapter:     Chapter 17  OO For Graphical User Interfaces, A Tour Of Three Toolkits
+##
+## Section:     Section 17.21  Drawing Shapes, Text, and Images in Gnome/GTK+
+##
+
+
+CC=gcc
+LDLIBS=`gnome-config --libs gnomeui`
+CFLAGS=-Wall -g `gnome-config --cflags gnomeui`
+
+Sketch:  Sketch.o Makefile_Sketch
+        $(CC) Sketch.o $(LDLIBS) -o Sketch
+
+Sketch.o: Sketch.c
+        $(CC) $(CFLAGS) -c Sketch.c
+
+clean:
+        rm -f Sketch
+        rm -f Sketch.o

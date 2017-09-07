@@ -1,3 +1,0 @@
-#! /bin/sh
-
-rm -f *.jj AST*.java Parse*.java Token*.java *ParserState*.java Node*.java JavaChar* SimpleNode* *.class *~

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!--
+The name of this <document>
+is test.xml
+-->
+
+<list_of_entries xmlns="http://www.w3.org/1999/xhtml">
+
+  <entry>
+<eg><![CDATA[ <?xml version="1.0"?>
+<!DOCTYPE greeting SYSTEM "hello.dtd">
+<greeting>Hello, world!</greeting>
+]]></eg>
+      <name>wonwon</name>
+      <phone>  32323-38373 </phone>
+
+  </entry>
+
+  <self_enclosed_element />
+<entry>
+  <entry>
+      hello how are you
+      <name>tintin jinjin kinkin </name>
+      junjun dundun kunkun
+      <phone 
+
+type = "home"   payment_mode="cash">  000-
+999-88 </phone>
+      koot soot doot
+
+  </entry>
+</entry>
+
+</list_of_entries>

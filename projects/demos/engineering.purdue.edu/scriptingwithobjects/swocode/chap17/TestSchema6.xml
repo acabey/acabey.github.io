@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<!-- file: TestSchema6.xml -->
+
+<AAA xmlns="http://AAAnamespace"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://AAAnamespace DerivedDataType.xsd">
+    <BBB> hello I am here </BBB>                               <!-- A -->
+    <CCC>zabcz6</CCC>                                          <!-- B -->
+</AAA>

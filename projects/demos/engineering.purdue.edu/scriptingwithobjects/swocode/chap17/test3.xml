@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<phonebook xmlns="http://www.w3.org/1999/xhtml">
+b
+<a>hello</a><b>jello</b><c>yello</c>
+<!-- this is a comment
+this is an extension of the comment
+-->
+<?xyz abc: def?>
+</phonebook>

@@ -1,0 +1,27 @@
+// This code example is from the following source:
+//
+// Book Title:  Programming with Objects, A Comparative Presentation
+//              of Object-Oriented Programming with C++ and Java
+//
+// Book Author:  Avinash Kak
+//
+// Chapter:     Chapter 3 ----  The Notion of a Class and Some Other Key Ideas
+//
+// Section:     Section 3.9  ----  Packages in Java
+//
+
+
+
+
+//TestOne.java
+package packageY;                                            //(E)
+
+public class TestOne {
+    public void print() { 
+        System.out.println( "print of packageY.TestOne invoked" ); 
+    }
+    public static void main( String[] args ) {
+        TestOne testone = new TestOne();
+        testone.print();
+    }
+}

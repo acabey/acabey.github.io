@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!-- file: TestSchema5.xml -->
+
+<AAA xmlns="http://AAAnamespace"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://AAAnamespace CharacterContentOnly.xsd">
+
+        "testing character content only schema"
+        "here is a second line"
+
+</AAA>

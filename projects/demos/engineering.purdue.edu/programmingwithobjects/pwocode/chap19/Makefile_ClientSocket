@@ -1,0 +1,40 @@
+## This code example is from the following source:
+##
+## Book Title:  Programming with Objects, A Comparative Presentation
+##              of Object-Oriented Programming with C++ and Java
+##
+## Book Author:   Avinash Kak
+##
+## Chapter:     Chapter 19  Network Programming
+##
+## Section:     Section 19.3  Establishing Socket Connections With Existing Servers In C++
+##
+
+
+#Makefile_ClientSocket
+
+CC=g++
+
+#for static and dynamic linking
+LDLIBS=-L$(QTDIR)/lib -lqt
+
+#for compilation
+CFLAGS=-g -I$(QTDIR)/include 
+
+ClientSocket: moc_ClientSocket.o ClientSocket.o
+	$(CC) $(LDLIBS)  -o ClientSocket moc_ClientSocket.o           \
+                                                       ClientSocket.o 
+
+moc_ClientSocket.cc: ClientSocket.h
+	moc -o moc_ClientSocket.cc ClientSocket.h
+
+moc_ClientSocket.o: moc_ClientSocket.cc
+	$(CC) -c $(CFLAGS) -O2 moc_ClientSocket.cc
+
+ClientSocket.o: ClientSocket.cc ClientSocket.h
+	$(CC) -c $(CFLAGS) -O2 ClientSocket.cc
+
+clean:
+	rm -f ClientSocket
+	rm -f *.o
+	rm -f moc*.*

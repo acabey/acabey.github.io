@@ -1,0 +1,2 @@
+// This is a comment line
+you point with your magic wand when you want to cast a spell.
