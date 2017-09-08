@@ -9,6 +9,9 @@
 .content p {
 	color: #3a3a3a;
 	font-size: 18px;
+}
+
+.content li {
 	margin-left: 30px;
 }
 
