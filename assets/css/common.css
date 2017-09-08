@@ -116,7 +116,8 @@ header {
 
 /* Media Queries
 /*-----------------------*/
-@media (max-width: 640px) {
+/* Large mobile */
+@media (max-width: 640px) , (max-height: 640px) and (orientation:landscape) {
 	.avatar {
 		width: 66px;
 	}
@@ -128,24 +129,39 @@ header {
 	h1 span {
 		display: block;
 	}
+	
+	.navbar {
+		width: 100%;
+	}
+	
+	.navbar .navbar-right {
+		display: inline;
+	}
+	
+	.info {
+		padding-top: 0px;
+	}
 }
 
+/* Small mobile */
 @media (max-width: 480px) {
 	.container {
 		width: 90%;
 	}
 }
 
-
-@media (max-width: 640px) and (orientation:landscape) {
-	.info {
-		padding-top: 50px;
+/* Large mobile landscape */
+@media (max-height: 640px) and (orientation:landscape) {
+	.container {
+		width: 90%;
 	}
-}
-
-
-@media (max-width: 480px) {
-	.info {
-		padding-top: 50px;
+	
+	.navbar .navbar-right {
+		display: inline;
+	}
+	
+	.navbar .navbar-right a {
+		margin-left: 18px;
+		font-size: 20px;
 	}
 }

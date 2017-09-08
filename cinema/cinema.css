@@ -23,6 +23,35 @@
 
 /* Media Queries
 /*-----------------------*/
+@media (max-width: 640px) , (max-height: 640px) and (orientation:landscape) {
+	.content {
+		width: 100%;
+	}
+}/* Content
+/*-----------------------*/
+.content {
+	margin-bottom: 30px;
+	width: 80%;
+	text-align: justify;
+}
+
+.content p {
+	color: #3a3a3a;
+	font-size: 18px;
+}
+
+.content li {
+	margin-left: 30px;
+}
+
+/*
+.content span {
+	font-weight: 600;
+}
+*/
+
+/* Media Queries
+/*-----------------------*/
 @media (max-width: 640px) {
 	.content {
 		width: 100%;

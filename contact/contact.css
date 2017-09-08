@@ -28,7 +28,7 @@ a {
 
 /* Media Queries
 /*-----------------------*/
-@media (max-width: 640px) {
+@media (max-width: 640px) , (max-height: 640px) and (orientation:landscape) {
 	.bio {
 		width: 100%;
 	}
