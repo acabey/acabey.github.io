@@ -101,29 +101,6 @@ header {
 	text-decoration: none
 }
 
-.social {
-    margin: 10px 0 30px 0;
-}
-
-.social li {
-	display: inline;
-	font-size: 18px;
-	letter-spacing: 2px;
-	padding-left: 0px;
-}
-
-.social li a {
-	color: #3a3a3a;
-}
-
-.social li a:hover {
-	color: #34A9FF;
-}
-
-.social span {
-	padding: 0 20px;
-}
-
 /* Footer
 /*-----------------------*/
 .copyright {
@@ -151,11 +128,14 @@ header {
 	h1 span {
 		display: block;
 	}
+}
 
-	.bio {
-		width: 100%;
+@media (max-width: 480px) {
+	.container {
+		width: 90%;
 	}
 }
+
 
 @media (max-width: 640px) and (orientation:landscape) {
 	.info {
@@ -163,13 +143,9 @@ header {
 	}
 }
 
-@media (max-width: 480px) {
-	.container {
-		width: 90%;
-	}
 
+@media (max-width: 480px) {
 	.info {
 		padding-top: 50px;
 	}
-
 }

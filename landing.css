@@ -1,3 +1,29 @@
+/* Social (header)
+/*-----------------------*/
+.social {
+    margin: 10px 0 30px 0;
+}
+
+.social li {
+	display: inline;
+	font-size: 18px;
+	letter-spacing: 2px;
+	padding-left: 0px;
+}
+
+.social li a {
+	color: #3a3a3a;
+}
+
+.social li a:hover {
+	color: #34A9FF;
+}
+
+.social span {
+	padding: 0 20px;
+}
+
+
 /* About
 /*-----------------------*/
 .about {
@@ -37,4 +63,16 @@
 	font-style: italic;
 	font-size: 18px;
 	padding-left: 15px;
+}
+
+/* Media Queries
+/*-----------------------*/
+@media (max-width: 640px) {
+	.bio {
+		width: 100%;
+	}
+	
+	.social span {
+		padding: 0 16px;
+	}
 }

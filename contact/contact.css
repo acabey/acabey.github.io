@@ -25,3 +25,11 @@ a {
 	width: 80%;
 	text-align: justify;
 }
+
+/* Media Queries
+/*-----------------------*/
+@media (max-width: 640px) {
+	.bio {
+		width: 100%;
+	}
+}

@@ -20,3 +20,11 @@
 	font-weight: 600;
 }
 */
+
+/* Media Queries
+/*-----------------------*/
+@media (max-width: 640px) {
+	.content {
+		width: 100%;
+	}
+}
