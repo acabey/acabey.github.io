@@ -1,0 +1,327 @@
+<html>
+
+<head>
+  <title>Online RSA Key Generator</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script type="text/javascript" src="jsencrypt.min.js"></script>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h1>Online RSA Key Generator</h1></div>
+    <div class="panel-body">
+      <div class="row col-lg-12">
+      </div>
+      <div class="col-lg-2">
+        <div class="btn-group">
+          <div class="input-group">
+            <span class="input-group-addon">Key Size</span>
+            <button class="btn btn-default dropdown-toggle" id="key-size" type="button" data-value="1024"
+                    data-toggle="dropdown">1024 bit <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a class="change-key-size" data-value="512" href="#">512 bit</a></li>
+              <li><a class="change-key-size" data-value="1024" href="#">1024 bit</a></li>
+              <li><a class="change-key-size" data-value="2048" href="#">2048 bit</a></li>
+              <li><a class="change-key-size" data-value="4096" href="#">4096 bit</a></li>
+            </ul>
+          </div>
+        </div>
+        <br>&nbsp;<br>
+        <button id="generate" class="btn btn-primary">Generate New Keys</button>
+        <br>&nbsp;<br>
+        <span><i><small id="time-report"></small></i></span>
+        <br>&nbsp;<br>
+        <label for="async-ck"><input id="async-ck" type="checkbox"> Async</label>
+      </div>
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="col-lg-6">
+            <label for="privkey">Private Key</label><br/>
+            <small>
+              <textarea id="privkey" rows="15" style="width:100%"></textarea>
+            </small>
+          </div>
+          <div class="col-lg-6">
+            <label for="pubkey">Public Key</label><br/>
+            <small><textarea id="pubkey" rows="15" style="width:100%" readonly="readonly"></textarea></small>
+            <textarea id="stored_pubkey" style="display: none" readonly="readonly">
+              -----BEGIN PUBLIC KEY-----
+              MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnwuYk62sx8P5zq0UydpW
+              IFzHWUFFcKtAZgMptYpnI0GmdEOiL0oJaHRZjfFnXNzllvioL89KoGeW28PEjM1L
+              mGZTs8tUCmpVtazN8ZTTKa3pwciPz9bt+ub1XqOkqTR+VvcADy0Cz5qs0XzsdhwH
+              AYCKDe4VPeCyrawwD4So1dNS5Etlz/XKmrYTPsMFwlBHJkW3T545OS9aJV5HucMW
+              IkdKLH7ZKZMjD+LaiTkFBF9OPhzcfjgPLoZnrrfLtL0MkYhcpB9oj6VUkoGcyWem
+              2fyta6SBOIr70D/fxWf/cODC1ynr/2nBwhPUJhr5S7wniszmdnjCI4ZcGnIxP13x
+              owIDAQAB
+              -----END PUBLIC KEY-----
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>RSA Encryption Test</h3></div>
+    <div class="panel-body">
+      <div class="col-lg-5">
+        <label for="input">Text to encrypt:</label><br/>
+        <textarea id="input" name="input" style="width: 100%" rows="4">This is a test!</textarea>
+      </div>
+      <div class="col-lg-2">
+        <label>&nbsp;</label><br/>
+        <button id="btn-encrypt" class="btn btn-primary">Encrypt / Decrypt</button>
+      </div>
+      <div class="col-lg-5">
+        <label for="crypted">Encrypted:</label><br/>
+        <textarea id="crypted" name="crypted" style="width: 100%" rows="4"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>RSA  Signature Test</h3></div>
+    <div class="panel-body">
+      <div class="col-lg-5">
+        <label for="sign_input">Text to sign:</label><br/>
+        <textarea id="sign_input" name="sign_input" style="width: 100%" rows="4">This is a test!</textarea>
+      </div>
+      <div class="col-lg-2">
+        <label>&nbsp;</label><br/>
+        <button id="btn-sign" class="btn btn-primary">Sign / Verify</button>
+      </div>
+      <div class="col-lg-5">
+        <label for="sign_crypted">Signature:</label><br/>
+        <textarea id="sign_crypted" name="crypted" style="width: 100%" rows="4"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Signed Code Test</h3></div>
+    <div class="panel-body">
+      <div class="col-lg-4">
+        <label for="sign_input">Signed Code</label><br/>
+        <textarea id="signed_code" name="signed_code" style="width: 100%" rows="4"></textarea>
+      </div>
+      <div class="col-lg-1">
+        <label>&nbsp;</label><br/>
+        <button id="load_signed_code" class="btn btn-primary">Verify and Run Code</button>
+      </div>
+      <div class="col-lg-1">
+        <label>&nbsp;</label><br/>
+        <button id="generate_qr" class="btn btn-primary">Generate QR Code</button>
+      </div>
+      <div class="col-lg-4">
+        <label for="sign_crypted">Code Signature:</label><br/>
+        <textarea id="signed_code_signature" name="signed_code_signature" style="width: 100%" rows="4"></textarea>
+      </div>
+      <div class="col-lg-2" id="qrcode">
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(function () {
+
+    //Change the key size value for new keys
+    $(".change-key-size").each(function (index, value) {
+      var el = $(value);
+      var keySize = el.attr('data-value');
+      el.click(function (e) {
+        var button = $('#key-size');
+        button.attr('data-value', keySize);
+        button.html(keySize + ' bit <span class="caret"></span>');
+        e.preventDefault();
+      });
+    });
+
+    // Execute when they click the button.
+    $('#btn-encrypt').click(function () {
+
+      // Create the encryption object.
+      var crypt = new JSEncrypt();
+
+      // Set the private.
+      crypt.setPrivateKey($('#privkey').val());
+      //return;
+      // If no public key is set then set it here...
+      var pubkey = $('#pubkey').val();
+      if (!pubkey) {
+        $('#pubkey').val(crypt.getPublicKey());
+      }
+
+      // Get the input and crypted values.
+      var input = $('#input').val();
+      var crypted = $('#crypted').val();
+
+      // Alternate the values.
+      if (input) {
+        $('#crypted').val(crypt.encrypt(input));
+        $('#input').val('');
+      }
+      else if (crypted) {
+        var decrypted = crypt.decrypt(crypted);
+        if (!decrypted)
+          decrypted = 'This is a test!';
+        $('#input').val(decrypted);
+        $('#crypted').val('');
+      }
+    });
+
+    // Sign when button clicked
+    $('#btn-sign').click(function () {
+
+      // Create the encryption object.
+      var crypt = new JSEncrypt();
+
+      // Set the private.
+      crypt.setPrivateKey($('#privkey').val());
+      //return;
+      // If no public key is set then set it here...
+      var pubkey = $('#pubkey').val();
+      if (!pubkey) {
+        $('#pubkey').val(crypt.getPublicKey());
+      }
+
+      // Get the input and crypted values.
+      var input = $('#sign_input').val();
+      var crypted = $('#sign_crypted').val();
+
+      // If signature is present, verify. Otherwise sign
+      if (crypted) {
+        var verified = crypt.verify(input, crypted, CryptoJS.SHA256);
+        if (verified) {
+          alert('Valid signature');
+        }
+        else {
+          alert('Invalid signature');
+        }
+      } else if (input) {
+        $('#sign_crypted').val(crypt.sign(input, CryptoJS.SHA256, "sha256"));
+      } else {
+        alert('Enter text to sign')
+      }
+    });
+
+    // Check for parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    if (!urlParams.has('code')) {
+      return
+    } else {
+      let signed_code_b64 = decodeURIComponent(urlParams.get('code'));
+      let signed_code = atob(signed_code_b64);
+      $('#signed_code').val(signed_code);
+      console.log(`Loaded code from URL: ${signed_code}`)
+    }
+
+    if (!urlParams.has('signature')) {
+      return
+    } else {
+      let signed_code_signature = decodeURIComponent(urlParams.get('signature'));
+      $('#signed_code_signature').val(signed_code_signature);
+      console.log(`Loaded signature from URL: ${signed_code_signature}`)
+    }
+
+    // Run code if signature is valid
+    $('#load_signed_code').click(function () {
+
+      // Create the encryption object.
+      var crypt = new JSEncrypt();
+
+      // Get stored pubkey
+      var pubkey = $('#stored_pubkey').val();
+      crypt.setPublicKey(pubkey);
+
+      console.log('Loaded stored pubkey')
+
+      // Get the input and crypted values.
+      var signed_code = $('#signed_code').val();
+      var signed_code_signature = $('#signed_code_signature').val();
+
+      // Get from URL parameters if not entered. Decode from B64
+      if (!signed_code) {
+          console.error('No code')
+          return
+      }
+
+      // Signature is B64 encoded from URL
+      if (!signed_code_signature) {
+        console.error('No signature')
+        return
+      }
+
+      // Verify signature and run
+      var verified = crypt.verify(signed_code, signed_code_signature, CryptoJS.SHA256);
+      if (verified) {
+        alert('Valid signature');
+        eval(signed_code)
+      }
+      else {
+        alert('Invalid signature');
+        return
+      }
+    });
+
+    $('#generate_qr').click(function () {
+      let signed_code = encodeURIComponent(btoa($('#signed_code').val()));
+      let signed_code_signature = encodeURIComponent($('#signed_code_signature').val());
+
+      const url = new URL(window.location.origin + window.location.pathname);
+      url.searchParams.append('code', signed_code);
+      url.searchParams.append('signature', signed_code_signature);
+
+
+      console.log(`Output URL: ${url.toString()}`)
+      new QRCode(document.getElementById("qrcode"), url.toString());
+    });
+
+    var generateKeys = function () {
+      var sKeySize = $('#key-size').attr('data-value');
+      var keySize = parseInt(sKeySize);
+      var crypt = new JSEncrypt({default_key_size: keySize});
+      var async = $('#async-ck').is(':checked');
+      var dt = new Date();
+      var time = -(dt.getTime());
+      if (async) {
+        $('#time-report').text('.');
+        var load = setInterval(function () {
+          var text = $('#time-report').text();
+          $('#time-report').text(text + '.');
+        }, 500);
+        crypt.getKey(function () {
+          clearInterval(load);
+          dt = new Date();
+          time += (dt.getTime());
+          $('#time-report').text('Generated in ' + time + ' ms');
+          $('#privkey').val(crypt.getPrivateKey());
+          $('#pubkey').val(crypt.getPublicKey());
+        });
+        return;
+      }
+      crypt.getKey();
+      dt = new Date();
+      time += (dt.getTime());
+      $('#time-report').text('Generated in ' + time + ' ms');
+      $('#privkey').val(crypt.getPrivateKey());
+      $('#pubkey').val(crypt.getPublicKey());
+    };
+
+    // If they wish to generate new keys.
+    $('#generate').click(generateKeys);
+    generateKeys();
+  });
+</script>
+</body>
+</html>
+
